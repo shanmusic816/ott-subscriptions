@@ -4,234 +4,218 @@
 <meta charset="UTF-8">
 <title>GlitchXshan Store – Premium OTT & AI Deals</title>
 
-<link rel="stylesheet" href="style.css">
-
 <style>
-
+/* ---------- GLOBAL ---------- */
 body {
-  font-family: Arial, sans-serif;
-  background: #f2f2f2;
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f4f6fb;
+  color: #222;
 }
 
-.header {
+/* ---------- HEADER ---------- */
+.site-header {
   text-align: center;
-  padding: 30px 10px;
+  padding: 40px 15px;
+  background: linear-gradient(135deg, #111827, #1f2933);
+  color: #fff;
 }
 
-.header h1 {
-  font-size: 32px;
-  margin-bottom: 5px;
+.site-logo {
+  width: 110px;
+  margin-bottom: 10px;
 }
 
-.header p {
-  color: #666;
+.site-title {
+  margin: 5px 0;
+  font-size: 28px;
+  font-weight: 700;
 }
 
+.site-tagline {
+  font-size: 14px;
+  color: #cbd5e1;
+}
+
+/* ---------- PRODUCTS GRID ---------- */
 .products {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 25px;
+  gap: 20px;
   padding: 30px;
-  max-width: 1000px;
+  max-width: 1100px;
   margin: auto;
 }
 
+/* ---------- PRODUCT CARD ---------- */
 .product-card {
   background: #fff;
-  padding: 15px;
-  border-radius: 12px;
+  border-radius: 14px;
+  padding: 18px;
   text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.12);
 }
 
 .product-card img {
-  width: 80px;
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
   margin-bottom: 10px;
 }
 
 .product-card h3 {
-  margin: 10px 0;
+  margin: 10px 0 8px;
+  font-size: 16px;
 }
 
-.product-card select {
+/* ---------- SELECT ---------- */
+select {
   width: 100%;
   padding: 8px;
-  margin: 8px 0;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  font-size: 13px;
 }
 
+/* ---------- PRICE ---------- */
 .price {
-  font-size: 20px;
-  margin: 10px 0;
-  color: #e53935;
+  font-size: 18px;
+  font-weight: bold;
+  color: #e11d48;
+  margin-bottom: 12px;
 }
 
+/* ---------- BUTTON ---------- */
 .buy-btn {
   width: 100%;
   padding: 10px;
-  background: #000;
+  background: linear-gradient(135deg, #000, #111);
   color: #fff;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
+.buy-btn:hover {
+  background: linear-gradient(135deg, #1f2933, #000);
+  transform: scale(1.03);
+}
+
+/* ---------- FOOTER ---------- */
 .footer {
-  margin: 40px 0 20px;
   text-align: center;
-  font-size: 14px;
-  color: #777;
+  font-size: 13px;
+  color: #666;
+  padding: 25px 10px;
+}
+
+.footer small {
+  display: block;
+  margin-top: 6px;
+  color: #999;
 }
 </style>
 
 </head>
 <body>
 
+<!-- HEADER -->
 <header class="site-header">
-  <img src="logo.jpg" alt="GlitchXshan Store Logo" class="site-logo">
+  <img src="logo.jpg" class="site-logo" alt="GlitchXshan Logo">
   <h1 class="site-title">GlitchXshan Store</h1>
   <p class="site-tagline">Premium OTT & AI Deals</p>
 </header>
 
-<div class="products">
+<!-- PRODUCTS -->
 <div class="products">
 
-  <!-- PRIME VIDEO -->
   <div class="product-card">
     <img src="prime.png">
     <h3>Prime Video</h3>
-
-    <select onchange="updatePrice(this)">
-      <option value="99">1 Month • With Ads – ₹99</option>
-      <option value="129">1 Month • No Ads – ₹129</option>
-      <option value="179">6 Months • With Ads – ₹179</option>
-      <option value="249">6 Months • No Ads – ₹249</option>
+    <select onchange="this.nextElementSibling.innerText='₹'+this.value">
+      <option value="99">1 Month · With Ads – ₹99</option>
+      <option value="129">1 Month · No Ads – ₹129</option>
     </select>
-
-    <div class="price">₹<span>99</span></div>
-
-    <button class="buy-btn" onclick="buyNow('Prime Video', this)">
-      Buy Now
-    </button>
+    <div class="price">₹99</div>
+    <button class="buy-btn">Buy Now</button>
   </div>
 
-  <!-- SONY LIV -->
   <div class="product-card">
     <img src="sonyliv.png">
     <h3>Sony LIV</h3>
-
-    <select onchange="updatePrice(this)">
+    <select onchange="this.nextElementSibling.innerText='₹'+this.value">
       <option value="99">1 Month Premium – ₹99</option>
     </select>
-
-    <div class="price">₹<span>99</span></div>
-
-    <button class="buy-btn" onclick="buyNow('Sony LIV', this)">
-      Buy Now
-    </button>
+    <div class="price">₹99</div>
+    <button class="buy-btn">Buy Now</button>
   </div>
 
-  <!-- JIO HOTSTAR -->
   <div class="product-card">
     <img src="hotstar.png">
     <h3>Jio Hotstar</h3>
-
-    <select onchange="updatePrice(this)">
+    <select onchange="this.nextElementSibling.innerText='₹'+this.value">
       <option value="79">1 Month Super – ₹79</option>
     </select>
-
-    <div class="price">₹<span>79</span></div>
-
-    <button class="buy-btn" onclick="buyNow('Jio Hotstar', this)">
-      Buy Now
-    </button>
+    <div class="price">₹79</div>
+    <button class="buy-btn">Buy Now</button>
   </div>
 
-  <!-- CHATGPT PLUS -->
   <div class="product-card">
     <img src="chatgpt.png">
     <h3>ChatGPT Plus</h3>
-
-    <select onchange="updatePrice(this)">
+    <select onchange="this.nextElementSibling.innerText='₹'+this.value">
       <option value="349">1 Month – ₹349</option>
     </select>
-
-    <div class="price">₹<span>349</span></div>
-
-    <button class="buy-btn" onclick="buyNow('ChatGPT Plus', this)">
-      Buy Now
-    </button>
+    <div class="price">₹349</div>
+    <button class="buy-btn">Buy Now</button>
   </div>
 
-  <!-- GEMINI AI PRO -->
   <div class="product-card">
     <img src="gemini.png">
     <h3>Gemini AI Pro</h3>
-
-    <select onchange="updatePrice(this)">
-      <option value="399">1 Year • 2TB Storage – ₹399</option>
+    <select onchange="this.nextElementSibling.innerText='₹'+this.value">
+      <option value="399">1 Year · 2TB – ₹399</option>
     </select>
-
-    <div class="price">₹<span>399</span></div>
-
-    <button class="buy-btn" onclick="buyNow('Gemini AI Pro', this)">
-      Buy Now
-    </button>
+    <div class="price">₹399</div>
+    <button class="buy-btn">Buy Now</button>
   </div>
 
-  <!-- ADOBE -->
   <div class="product-card">
     <img src="adobe.png">
     <h3>Adobe Creative Cloud</h3>
-
-    <select onchange="updatePrice(this)">
+    <select onchange="this.nextElementSibling.innerText='₹'+this.value">
       <option value="2999">1 Year – ₹2999</option>
     </select>
-
-    <div class="price">₹<span>2999</span></div>
-
-    <button class="buy-btn" onclick="buyNow('Adobe Creative Cloud', this)">
-      Buy Now
-    </button>
+    <div class="price">₹2999</div>
+    <button class="buy-btn">Buy Now</button>
   </div>
 
-  <!-- PERPLEXITY -->
   <div class="product-card">
     <img src="perplexity.png">
     <h3>Perplexity AI Pro</h3>
-
-    <select onchange="updatePrice(this)">
+    <select onchange="this.nextElementSibling.innerText='₹'+this.value">
       <option value="549">1 Year – ₹549</option>
     </select>
-
-    <div class="price">₹<span>549</span></div>
-
-    <button class="buy-btn" onclick="buyNow('Perplexity AI Pro', this)">
-      Buy Now
-    </button>
+    <div class="price">₹549</div>
+    <button class="buy-btn">Buy Now</button>
   </div>
 
 </div>
 
-<footer class="footer">
-  © 2026 GlitchXshan | Made with ❤️ by Shan
-</footer>
+<!-- FOOTER -->
+<div class="footer">
+  Digital service only. No refund after delivery.
+  <small>© 2026 GlitchXshan Store</small>
+</div>
 
-<script>
-function updatePrice(select) {
-  const card = select.closest(".product-card");
-  card.querySelector(".price span").innerText = select.value;
-}
-
-function buyNow(product, btn) {
-  const card = btn.closest(".product-card");
-  const price = card.querySelector(".price span").innerText;
-
-  window.location.href =
-    "payment.html?product=" + encodeURIComponent(product) +
-    "&price=" + price;
-}
-</script>
-<p style="font-size:12px;color:#666;text-align:center;margin-top:12px;">
-Digital service only. No refund after delivery.
-</p>
 </body>
 </html>
