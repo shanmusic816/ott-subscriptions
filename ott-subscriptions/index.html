@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GlitchXshan Store – Premium OTT & AI Deals</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;800&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  padding: 30px;
+  font-family: Arial, sans-serif;
+  background: #f2f2f2;
+}
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.header h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 44px;
+  margin: 0;
+}
+.header p {
+  font-family: 'Montserrat', sans-serif;
+  margin-top: 8px;
+  font-size: 16px;
+  color: #555;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.products {
+  display: flex;
+  gap: 35px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.card {
+  background: #fff;
+  width: 260px;
+  padding: 18px;
+  border-radius: 12px;
+  text-align: center;
+}
+.card img {
+  width: 100%;
+  height: 130px;
+  object-fit: contain;
+}
+select {
+  width: 100%;
+  padding: 9px;
+  margin: 12px 0;
+}
+.price {
+  font-size: 22px;
+  color: red;
+  font-weight: bold;
+}
+button {
+  width: 100%;
+  padding: 11px;
+  margin-top: 12px;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <h1>GlitchXshan Store</h1>
+  <p>Premium OTT & AI Deals</p>
+</div>
+
+<div class="products">
+
+<!-- PRIME -->
+<div class="card">
+  <img src="assets/prime.png">
+  <h3>Prime Video</h3>
+  <select id="plan1">
+    <option value="69">1 Month – Ads</option>
+    <option value="89">1 Month – No Ads</option>
+  </select>
+  <div class="price" id="price1">₹69</div>
+  <button onclick="buy(1)">Buy Now</button>
+</div>
+
+<!-- SONY LIV -->
+<div class="card">
+  <img src="assets/sonyliv.png">
+  <h3>Sony LIV</h3>
+  <select id="plan2">
+    <option value="79">1 Month Premium</option>
+  </select>
+  <div class="price" id="price2">₹79</div>
+  <button onclick="buy(2)">Buy Now</button>
+</div>
+
+<!-- JIO HOTSTAR -->
+<div class="card">
+  <img src="assets/hotstar.png">
+  <h3>Jio Hotstar</h3>
+  <select id="plan3">
+    <option value="59">1 Month Super</option>
+  </select>
+  <div class="price" id="price3">₹59</div>
+  <button onclick="buy(3)">Buy Now</button>
+</div>
+
+<!-- CHATGPT -->
+<div class="card">
+  <img src="assets/chatgpt.png">
+  <h3>ChatGPT Plus</h3>
+  <select id="plan4">
+    <option value="299">1 Month</option>
+  </select>
+  <div class="price" id="price4">₹299</div>
+  <button onclick="buy(4)">Buy Now</button>
+</div>
+
+<!-- GEMINI -->
+<div class="card">
+  <img src="assets/gemini.png">
+  <h3>Gemini AI Pro</h3>
+  <select id="plan5">
+    <option value="399">1 Year – 2TB</option>
+  </select>
+  <div class="price" id="price5">₹399</div>
+  <button onclick="buy(5)">Buy Now</button>
+</div>
+
+<!-- ADOBE -->
+<div class="card">
+  <img src="assets/adobe.png">
+  <h3>Adobe Creative Cloud</h3>
+  <select id="plan6">
+    <option value="2999">1 Year</option>
+  </select>
+  <div class="price" id="price6">₹2999</div>
+  <button onclick="buy(6)">Buy Now</button>
+</div>
+
+<!-- PERPLEXITY -->
+<div class="card">
+  <img src="assets/perplexity.png">
+  <h3>Perplexity AI Pro</h3>
+  <select id="plan7">
+    <option value="549">1 Year</option>
+  </select>
+  <div class="price" id="price7">₹549</div>
+  <button onclick="buy(7)">Buy Now</button>
+</div>
+
+</div>
+
+<script>
+// PRICE CHANGE
+plan1.onchange = () => price1.innerText = "₹" + plan1.value;
+plan2.onchange = () => price2.innerText = "₹" + plan2.value;
+plan3.onchange = () => price3.innerText = "₹" + plan3.value;
+plan4.onchange = () => price4.innerText = "₹" + plan4.value;
+plan5.onchange = () => price5.innerText = "₹" + plan5.value;
+plan6.onchange = () => price6.innerText = "₹" + plan6.value;
+plan7.onchange = () => price7.innerText = "₹" + plan7.value;
+
+// BUY → PAYMENT PAGE
+function buy(id) {
+  const price = document.getElementById("plan" + id).value;
+  const product = document.querySelectorAll(".card h3")[id - 1].innerText;
+
+  window.location.href =
+    "payment.html?product=" + encodeURIComponent(product) +
+    "&price=" + price;
+}
+</script>
+<footer class="footer">
+  © 2026 GlitchXshan | Made with ❤️ by Shan
+</footer>
+</body>
+</html>
