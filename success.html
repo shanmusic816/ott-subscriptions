@@ -21,26 +21,32 @@ body {
 h2 {
   color: green;
 }
+.order {
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 16px;
+}
+.copy-btn {
+  margin-top: 8px;
+  padding: 6px 12px;
+  font-size: 13px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
 .info {
   margin-top: 15px;
   font-size: 15px;
   line-height: 1.6;
 }
-.order {
-  margin-top: 10px;
-  font-weight: bold;
-}
 .note {
   font-size: 13px;
   color: #555;
-  margin-top: 10px;
-}
-input[type="file"] {
-  margin-top: 15px;
+  margin-top: 12px;
 }
 .wa-btn {
   display: block;
-  margin-top: 20px;
+  margin-top: 22px;
   padding: 14px;
   background: #25D366;
   color: #fff;
@@ -57,56 +63,88 @@ input[type="file"] {
   <h2>✅ Payment Submitted</h2>
 
   <div class="order">
-    Order ID: <span id="orderId"></span>
+    Order ID: <span id="orderId"></span><br>
+    <button class="copy-btn" onclick="copyOrderId()">Copy Order ID</button>
   </div>
 
   <div class="info">
     <strong>Product:</strong> <span id="product"></span><br>
     <strong>Amount:</strong> ₹<span id="price"></span><br>
-    <strong>Date & Time:</strong> <span id="time"></span>
+    <strong>Date:</strong> <span id="date"></span>
   </div>
 
   <div class="note">
-    Please send your payment screenshot on WhatsApp for verification.
+    ⚠️ Order ID does not confirm payment.<br>
+    Delivery will be done after UPI verification only.
   </div>
 
-  <input type="file" accept="image/*">
-
-  <!-- DIRECT WHATSAPP LINK (NO JS REDIRECT) -->
   <a id="waBtn" class="wa-btn" target="_blank">
-    Send on WhatsApp
+    Send Details on WhatsApp
   </a>
 </div>
 
 <script>
-/* GET DATA FROM URL */
+/* GET DATA */
 const params = new URLSearchParams(window.location.search);
-const product = params.get("product") || "N/A";
+const product = params.get("product") || "Unknown Product";
 const price = params.get("price") || "0";
-const time = params.get("time") || new Date().toLocaleString();
 
-/* FREE ORDER ID */
+/* APP CODE MAP (FUTURE-PROOF) */
+const appCodes = {
+  "Prime Video": "PV",
+  "Netflix": "NF",
+  "Sony LIV": "SL",
+  "Jio Hotstar": "JH",
+  "ChatGPT Plus": "CG",
+  "Gemini AI Pro": "GM",
+  "Adobe Creative Cloud": "AD",
+  "Perplexity AI Pro": "PP"
+};
+
+/* FIND APP CODE */
+let appCode = "OT";
+for (const key in appCodes) {
+  if (product.includes(key)) {
+    appCode = appCodes[key];
+    break;
+  }
+}
+
+/* DATE DDMMYY */
+const now = new Date();
+const dd = String(now.getDate()).padStart(2, "0");
+const mm = String(now.getMonth() + 1).padStart(2, "0");
+const yy = String(now.getFullYear()).slice(-2);
+const displayDate = `${dd}/${mm}/20${yy}`;
+
+/* ORDER ID */
 const orderId =
   "GX-" +
-  new Date().toISOString().slice(0,10).replace(/-/g,"") +
-  "-" +
+  appCode + "-" +
+  dd + mm + yy + "-" +
   Math.floor(1000 + Math.random() * 9000);
 
-/* SHOW DATA */
+/* SHOW */
+document.getElementById("orderId").innerText = orderId;
 document.getElementById("product").innerText = product;
 document.getElementById("price").innerText = price;
-document.getElementById("time").innerText = time;
-document.getElementById("orderId").innerText = orderId;
+document.getElementById("date").innerText = displayDate;
 
-/* WHATSAPP LINK (100% SAFE) */
-const phone = "918102549120"; // 🔴 tumhara number (NO +, NO SPACE)
+/* COPY FUNCTION */
+function copyOrderId() {
+  navigator.clipboard.writeText(orderId).then(() => {
+    alert("Order ID copied: " + orderId);
+  });
+}
 
+/* WHATSAPP */
+const phone = "918102549120"; // apna number (no +, no space)
 const msg =
   "Hi, I have completed the payment.\n\n" +
   "Order ID: " + orderId + "\n" +
   "Product: " + product + "\n" +
   "Amount: ₹" + price + "\n" +
-  "Date & Time: " + time + "\n\n" +
+  "Date: " + displayDate + "\n\n" +
   "Please verify my payment.";
 
 document.getElementById("waBtn").href =
