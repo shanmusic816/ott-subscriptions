@@ -53,6 +53,7 @@ body{
   border:none;
   border-radius:8px;
   cursor:pointer;
+  font-size:15px;
 }
 </style>
 </head>
@@ -66,7 +67,7 @@ body{
     Amount: ₹<span id="price">0</span>
   </div>
 
-  <!-- PAY BUTTON -->
+  <!-- PAY VIA UPI -->
   <a id="upiBtn" class="pay-btn">Pay via UPI App</a>
 
   <!-- QR CODE -->
@@ -75,7 +76,7 @@ body{
     <div class="note">Scan QR from any UPI app</div>
   </div>
 
-  <!-- CONFIRM BUTTON -->
+  <!-- CONFIRM -->
   <button class="done-btn" onclick="paid()">I Have Paid</button>
 </div>
 
@@ -85,29 +86,48 @@ const params = new URLSearchParams(window.location.search);
 const product = params.get("product") || "Order Payment";
 const price = params.get("price") || "0";
 
-/* SHOW DATA */
+/* SHOW PRODUCT + PRICE */
 document.getElementById("product").innerText = product;
 document.getElementById("price").innerText = price;
 
 /* YOUR UPI DETAILS */
 const upiId = "shanmusic816@okhdfcbank";
-const name = "GlitchXshan Store";
+const storeName = "GlitchXshan Store";
 
 /* CREATE UPI LINK */
 const upiLink =
-  `upi://pay?pa=${upiId}&pn=${encodeURIComponent(name)}&am=${price}&cu=INR`;
+  `upi://pay?pa=${upiId}&pn=${encodeURIComponent(storeName)}&am=${price}&cu=INR`;
 
-/* SET PAY BUTTON */
+/* SET UPI BUTTON */
 document.getElementById("upiBtn").href = upiLink;
 
-/* GENERATE QR (ONLINE API) */
+/* GENERATE QR */
 document.getElementById("qrImg").src =
   "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" +
   encodeURIComponent(upiLink);
 
+/* ORDER ID */
+const orderId = "GX-" + Date.now().toString().slice(-6);
+
+/* WHATSAPP NUMBER (NO +) */
+const phone = "918102549120";
+
 /* AFTER PAYMENT */
 function paid(){
-  alert("Payment submitted. Please send screenshot on WhatsApp.");
+  alert("Payment submitted. Opening WhatsApp…");
+
+  const msg =
+    "Payment Done ✅\n\n" +
+    "Order ID: " + orderId + "\n" +
+    "Product: " + product + "\n" +
+    "Amount: ₹" + price + "\n\n" +
+    "I have attached the payment screenshot.\n" +
+    "Please verify my payment.";
+
+  const url =
+    "https://wa.me/" + phone + "?text=" + encodeURIComponent(msg);
+
+  window.location.href = url;
 }
 </script>
 
