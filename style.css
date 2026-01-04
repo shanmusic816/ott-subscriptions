@@ -1,84 +1,213 @@
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f5f5f5;
+/* ================= RESET ================= */
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-/* HEADER */
-.site-header {
-  text-align: center;
-  padding: 30px 15px;
-  background: #ffffff;
+body{
+  background:#f4f6fb;
+  color:#111;
 }
 
-.site-logo {
-  width: 90px;
-  margin-bottom: 10px;
+/* ================= HEADER ================= */
+.site-header{
+  background:#ffffff;
+  text-align:center;
+  padding:20px 15px;
+  position:relative;
+  box-shadow:0 2px 10px rgba(0,0,0,0.08);
 }
 
-.site-header h1 {
-  margin: 5px 0;
+.site-logo{
+  width:90px;
+  margin-bottom:8px;
 }
 
-.site-header p {
-  color: #666;
-  font-size: 14px;
+.site-header h1{
+  font-size:22px;
+  margin-bottom:4px;
 }
 
-/* PRODUCTS */
-.products {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-  padding: 20px;
+.site-header p{
+  font-size:14px;
+  color:#666;
 }
 
-.product-card {
-  background: #fff;
-  border-radius: 10px;
-  padding: 15px;
-  text-align: center;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+/* CART BUTTON (HEADER) */
+.cart-btn{
+  position:absolute;
+  top:20px;
+  right:20px;
+  background:#000;
+  color:#fff;
+  padding:7px 14px;
+  border-radius:20px;
+  font-size:14px;
+  text-decoration:none;
 }
 
-.product-card img {
-  width: 70px;
-  height: 70px;
-  object-fit: contain;
-  margin-bottom: 10px;
+/* ================= PRODUCTS ================= */
+.products{
+  max-width:1100px;
+  margin:auto;
+  padding:25px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:20px;
 }
 
-.product-card h3 {
-  margin: 5px 0 10px;
+.product-card{
+  background:#fff;
+  border-radius:12px;
+  padding:15px;
+  text-align:center;
+  box-shadow:0 6px 18px rgba(0,0,0,0.08);
 }
 
-.product-card select {
-  width: 100%;
-  padding: 7px;
-  margin-bottom: 10px;
+.product-card img{
+  width:70px;
+  height:70px;
+  object-fit:contain;
+  margin-bottom:10px;
 }
 
-.price {
-  font-size: 18px;
-  color: #e63946;
-  margin-bottom: 10px;
-  font-weight: bold;
+.product-card h3{
+  font-size:16px;
+  margin-bottom:8px;
 }
 
-.product-card button {
-  width: 100%;
-  padding: 10px;
-  background: #000;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
+.product-card select{
+  width:100%;
+  padding:8px;
+  margin:8px 0;
+  border-radius:6px;
+  border:1px solid #ccc;
 }
 
-/* FOOTER */
-.footer {
-  text-align: center;
-  padding: 20px;
-  font-size: 13px;
-  color: #777;
+.price{
+  font-size:18px;
+  font-weight:bold;
+  color:#e63946;
+  margin:10px 0;
+}
+
+/* BUTTONS */
+.product-card button{
+  width:100%;
+  padding:10px;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.product-card button:not(.cart){
+  background:#16a34a;
+  color:#fff;
+  margin-bottom:6px;
+}
+
+.product-card button.cart{
+  background:#000;
+  color:#fff;
+}
+
+/* ================= CART PAGE ================= */
+.cart-box{
+  max-width:500px;
+  margin:30px auto;
+  padding:15px;
+}
+
+.cart-item{
+  background:#fff;
+  padding:12px;
+  margin-bottom:10px;
+  border-radius:8px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  box-shadow:0 4px 10px rgba(0,0,0,0.08);
+}
+
+.cart-item button{
+  background:red;
+  color:#fff;
+  border:none;
+  border-radius:6px;
+  padding:4px 8px;
+  cursor:pointer;
+}
+
+.cart-total{
+  text-align:center;
+  font-size:18px;
+  font-weight:bold;
+  margin-top:15px;
+}
+
+/* ================= PAYMENT PAGE ================= */
+.payment-box{
+  max-width:400px;
+  margin:50px auto;
+  background:#fff;
+  padding:25px;
+  border-radius:12px;
+  text-align:center;
+  box-shadow:0 6px 18px rgba(0,0,0,0.1);
+}
+
+.payment-box h2{
+  margin-bottom:10px;
+}
+
+.payment-box .amount{
+  font-size:22px;
+  color:#e63946;
+  margin:15px 0;
+}
+
+.pay-btn{
+  display:block;
+  margin-top:15px;
+  padding:12px;
+  background:green;
+  color:#fff;
+  text-decoration:none;
+  border-radius:8px;
+  font-weight:bold;
+}
+
+.payment-box button{
+  margin-top:15px;
+  padding:10px;
+  width:100%;
+  background:#000;
+  color:#fff;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+/* ================= FOOTER ================= */
+.footer{
+  text-align:center;
+  padding:25px 15px;
+  font-size:13px;
+  color:#777;
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:600px){
+  .cart-btn{
+    top:15px;
+    right:15px;
+    font-size:13px;
+  }
+
+  .site-header h1{
+    font-size:20px;
+  }
 }
