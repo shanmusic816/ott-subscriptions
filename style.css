@@ -74,3 +74,24 @@ select {
 <footer class="footer">
   © 2026 GlitchXshan | Made with ❤️ by Shan
 </footer>
+.site-header {
+  text-align: center;
+  padding: 25px 10px;
+}
+
+.site-logo {
+  width: 120px;
+  max-width: 80%;
+  margin-bottom: 10px;
+}
+
+.site-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 5px 0;
+}
+
+.site-tagline {
+  font-size: 14px;
+  opacity: 0.8;
+}
