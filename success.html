@@ -8,7 +8,7 @@
 body {
   font-family: Arial, sans-serif;
   background: #f2f2f2;
-  padding: 50px;
+  padding: 40px;
   text-align: center;
 }
 .box {
@@ -30,23 +30,23 @@ h2 {
   margin-top: 10px;
   font-weight: bold;
 }
-input[type="file"] {
-  margin-top: 15px;
-}
-button {
-  margin-top: 20px;
-  padding: 12px 20px;
-  background: #000;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 15px;
-}
 .note {
   font-size: 13px;
   color: #555;
   margin-top: 10px;
+}
+input[type="file"] {
+  margin-top: 15px;
+}
+.wa-btn {
+  display: block;
+  margin-top: 20px;
+  padding: 14px;
+  background: #25D366;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 16px;
 }
 </style>
 </head>
@@ -72,7 +72,10 @@ button {
 
   <input type="file" accept="image/*">
 
-  <button onclick="openWhatsApp()">Send on WhatsApp</button>
+  <!-- DIRECT WHATSAPP LINK (NO JS REDIRECT) -->
+  <a id="waBtn" class="wa-btn" target="_blank">
+    Send on WhatsApp
+  </a>
 </div>
 
 <script>
@@ -82,7 +85,7 @@ const product = params.get("product") || "N/A";
 const price = params.get("price") || "0";
 const time = params.get("time") || new Date().toLocaleString();
 
-/* FREE ORDER ID GENERATION */
+/* FREE ORDER ID */
 const orderId =
   "GX-" +
   new Date().toISOString().slice(0,10).replace(/-/g,"") +
@@ -95,22 +98,19 @@ document.getElementById("price").innerText = price;
 document.getElementById("time").innerText = time;
 document.getElementById("orderId").innerText = orderId;
 
-/* WHATSAPP FUNCTION (100% WORKING ON MOBILE) */
-function openWhatsApp() {
-  const phone = "918102549120"; // 🔴 YOUR NUMBER (NO +, NO SPACE)
+/* WHATSAPP LINK (100% SAFE) */
+const phone = "918102549120"; // 🔴 tumhara number (NO +, NO SPACE)
 
-  const msg =
-    "Hi, I have completed the payment.\n\n" +
-    "Order ID: " + orderId + "\n" +
-    "Product: " + product + "\n" +
-    "Amount: ₹" + price + "\n" +
-    "Date & Time: " + time + "\n\n" +
-    "Please verify my payment.";
+const msg =
+  "Hi, I have completed the payment.\n\n" +
+  "Order ID: " + orderId + "\n" +
+  "Product: " + product + "\n" +
+  "Amount: ₹" + price + "\n" +
+  "Date & Time: " + time + "\n\n" +
+  "Please verify my payment.";
 
-  const url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(msg);
-
-  window.open(url, "_blank");
-}
+document.getElementById("waBtn").href =
+  "https://wa.me/" + phone + "?text=" + encodeURIComponent(msg);
 </script>
 
 </body>
