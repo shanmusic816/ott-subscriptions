@@ -24,6 +24,7 @@ h2 {
 .info {
   margin-top: 15px;
   font-size: 15px;
+  line-height: 1.6;
 }
 .order {
   margin-top: 10px;
@@ -40,6 +41,7 @@ button {
   border: none;
   border-radius: 6px;
   cursor: pointer;
+  font-size: 15px;
 }
 .note {
   font-size: 13px;
@@ -65,7 +67,7 @@ button {
   </div>
 
   <div class="note">
-    Upload payment screenshot and send on WhatsApp
+    Please send your payment screenshot on WhatsApp for verification.
   </div>
 
   <input type="file" accept="image/*">
@@ -74,35 +76,40 @@ button {
 </div>
 
 <script>
+/* GET DATA FROM URL */
 const params = new URLSearchParams(window.location.search);
-const product = params.get("product");
-const price = params.get("price");
-const time = params.get("time");
+const product = params.get("product") || "N/A";
+const price = params.get("price") || "0";
+const time = params.get("time") || new Date().toLocaleString();
 
-/* FREE ORDER ID */
+/* FREE ORDER ID GENERATION */
 const orderId =
   "GX-" +
   new Date().toISOString().slice(0,10).replace(/-/g,"") +
   "-" +
   Math.floor(1000 + Math.random() * 9000);
 
+/* SHOW DATA */
 document.getElementById("product").innerText = product;
 document.getElementById("price").innerText = price;
 document.getElementById("time").innerText = time;
 document.getElementById("orderId").innerText = orderId;
 
+/* WHATSAPP FUNCTION (100% WORKING ON MOBILE) */
 function openWhatsApp() {
-  const msg =
-    `Hi, I have completed the payment.\n\n` +
-    `Order ID: ${orderId}\n` +
-    `Product: ${product}\n` +
-    `Amount: ₹${price}\n` +
-    `Date & Time: ${time}\n\n` +
-    `Please verify my payment.`;
+  const phone = "918102549120"; // 🔴 YOUR NUMBER (NO +, NO SPACE)
 
-  window.location.href =
-    "https://wa.me/91XXXXXXXXXX?text=" +
-    encodeURIComponent(msg);
+  const msg =
+    "Hi, I have completed the payment.\n\n" +
+    "Order ID: " + orderId + "\n" +
+    "Product: " + product + "\n" +
+    "Amount: ₹" + price + "\n" +
+    "Date & Time: " + time + "\n\n" +
+    "Please verify my payment.";
+
+  const url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(msg);
+
+  window.open(url, "_blank");
 }
 </script>
 
