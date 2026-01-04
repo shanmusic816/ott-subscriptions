@@ -1,34 +1,114 @@
 <!DOCTYPE html>
-<html>
-<head><title>Payment</title></head>
-<body style="font-family:Arial;text-align:center;padding:30px">
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Payment</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<h2 id="title"></h2>
-<h3>Total: ₹<span id="amount"></span></h3>
+<style>
+body{
+  font-family: Arial, sans-serif;
+  background:#f4f6fb;
+  padding:30px;
+}
+.box{
+  max-width:420px;
+  margin:auto;
+  background:#fff;
+  padding:25px;
+  border-radius:12px;
+  text-align:center;
+  box-shadow:0 8px 20px rgba(0,0,0,0.1);
+}
+.amount{
+  font-size:22px;
+  color:#e63946;
+  margin:15px 0;
+}
+.pay-btn{
+  display:block;
+  padding:12px;
+  background:green;
+  color:#fff;
+  border-radius:8px;
+  text-decoration:none;
+  margin:15px 0;
+  font-weight:bold;
+}
+.qr img{
+  width:200px;
+  margin-top:15px;
+}
+.note{
+  font-size:13px;
+  color:#666;
+  margin-top:10px;
+}
+.done-btn{
+  margin-top:20px;
+  padding:12px;
+  width:100%;
+  background:#000;
+  color:#fff;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+}
+</style>
+</head>
 
-<a id="upi" style="padding:12px 20px;background:green;color:white;border-radius:6px;text-decoration:none">
-Pay via UPI
-</a>
+<body>
+
+<div class="box">
+  <h2 id="product">Product</h2>
+
+  <div class="amount">
+    Amount: ₹<span id="price">0</span>
+  </div>
+
+  <!-- PAY BUTTON -->
+  <a id="upiBtn" class="pay-btn">Pay via UPI App</a>
+
+  <!-- QR CODE -->
+  <div class="qr">
+    <img id="qrImg" alt="UPI QR Code">
+    <div class="note">Scan QR from any UPI app</div>
+  </div>
+
+  <!-- CONFIRM BUTTON -->
+  <button class="done-btn" onclick="paid()">I Have Paid</button>
+</div>
 
 <script>
-const p = new URLSearchParams(location.search);
-let amount = 0;
-let title = "";
+/* READ DATA FROM URL */
+const params = new URLSearchParams(window.location.search);
+const product = params.get("product") || "Order Payment";
+const price = params.get("price") || "0";
 
-if(p.get("cart")){
-  const cart = JSON.parse(localStorage.getItem("cart")) || [];
-  cart.forEach(i => amount += Number(i.price));
-  title = "Cart Payment";
-}else{
-  title = p.get("product");
-  amount = p.get("price");
+/* SHOW DATA */
+document.getElementById("product").innerText = product;
+document.getElementById("price").innerText = price;
+
+/* YOUR UPI DETAILS */
+const upiId = "shanmusic816@okhdfcbank";
+const name = "GlitchXshan Store";
+
+/* CREATE UPI LINK */
+const upiLink =
+  `upi://pay?pa=${upiId}&pn=${encodeURIComponent(name)}&am=${price}&cu=INR`;
+
+/* SET PAY BUTTON */
+document.getElementById("upiBtn").href = upiLink;
+
+/* GENERATE QR (ONLINE API) */
+document.getElementById("qrImg").src =
+  "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" +
+  encodeURIComponent(upiLink);
+
+/* AFTER PAYMENT */
+function paid(){
+  alert("Payment submitted. Please send screenshot on WhatsApp.");
 }
-
-document.getElementById("title").innerText = title;
-document.getElementById("amount").innerText = amount;
-
-document.getElementById("upi").href =
-`upi://pay?pa=shanmusic816@okhdfcbank&pn=GlitchXshan Store&am=${amount}&cu=INR`;
 </script>
 
 </body>
