@@ -11,7 +11,7 @@ body{
   padding:20px;
 }
 .box{
-  max-width:500px;
+  max-width:520px;
   margin:auto;
   background:#fff;
   padding:20px;
@@ -26,6 +26,24 @@ body{
   border-radius:8px;
   background:#f9f9f9;
 }
+.left{
+  flex:1;
+}
+.qty{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.qty button{
+  width:26px;
+  height:26px;
+  border:none;
+  border-radius:6px;
+  background:#000;
+  color:#fff;
+  cursor:pointer;
+  font-weight:bold;
+}
 .remove{
   background:red;
   color:#fff;
@@ -33,6 +51,7 @@ body{
   border-radius:6px;
   padding:4px 8px;
   cursor:pointer;
+  margin-left:10px;
 }
 .total{
   font-size:18px;
@@ -69,9 +88,13 @@ body{
 
 <script>
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
-let itemsDiv = document.getElementById("cartItems");
-let totalEl = document.getElementById("total");
-let payBtn = document.getElementById("payBtn");
+const itemsDiv = document.getElementById("cartItems");
+const totalEl = document.getElementById("total");
+const payBtn = document.getElementById("payBtn");
+
+/* Ensure qty exists */
+cart = cart.map(i => ({ ...i, qty: i.qty || 1 }));
+save();
 
 function renderCart(){
   itemsDiv.innerHTML = "";
@@ -85,11 +108,22 @@ function renderCart(){
   }
 
   cart.forEach((item, index)=>{
-    total += Number(item.price);
+    const itemTotal = item.price * item.qty;
+    total += itemTotal;
 
     itemsDiv.innerHTML += `
       <div class="item">
-        <span>${item.name} – ₹${item.price}</span>
+        <div class="left">
+          <strong>${item.name}</strong><br>
+          ₹${item.price} × ${item.qty} = ₹${itemTotal}
+        </div>
+
+        <div class="qty">
+          <button onclick="decrease(${index})">−</button>
+          <span>${item.qty}</span>
+          <button onclick="increase(${index})">+</button>
+        </div>
+
         <button class="remove" onclick="removeItem(${index})">❌</button>
       </div>
     `;
@@ -100,10 +134,30 @@ function renderCart(){
   payBtn.href = "payment.html?product=Cart Items&price=" + total;
 }
 
-function removeItem(index){
-  cart.splice(index, 1);
-  localStorage.setItem("cart", JSON.stringify(cart));
+function increase(i){
+  cart[i].qty++;
+  save();
   renderCart();
+}
+
+function decrease(i){
+  if(cart[i].qty > 1){
+    cart[i].qty--;
+  } else {
+    cart.splice(i, 1);
+  }
+  save();
+  renderCart();
+}
+
+function removeItem(i){
+  cart.splice(i, 1);
+  save();
+  renderCart();
+}
+
+function save(){
+  localStorage.setItem("cart", JSON.stringify(cart));
 }
 
 renderCart();
