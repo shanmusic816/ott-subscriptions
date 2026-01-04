@@ -6,7 +6,7 @@
 
 <style>
 body{
-  font-family:Arial, sans-serif;
+  font-family: Arial, sans-serif;
   background:#f4f6fb;
   padding:20px;
 }
@@ -92,7 +92,7 @@ const itemsDiv = document.getElementById("cartItems");
 const totalEl = document.getElementById("total");
 const payBtn = document.getElementById("payBtn");
 
-/* Ensure qty exists */
+/* ensure qty exists */
 cart = cart.map(i => ({ ...i, qty: i.qty || 1 }));
 save();
 
@@ -130,8 +130,14 @@ function renderCart(){
   });
 
   totalEl.innerText = total;
+
+  /* PASS ITEM DETAILS TO PAYMENT */
+  const details = cart.map(i => `${i.name} x${i.qty}`).join(", ");
+  payBtn.href =
+    "payment.html?product=Cart Items&price=" + total +
+    "&items=" + encodeURIComponent(details);
+
   payBtn.style.display = "block";
-  payBtn.href = "payment.html?product=Cart Items&price=" + total;
 }
 
 function increase(i){
