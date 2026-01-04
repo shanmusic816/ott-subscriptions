@@ -2,238 +2,208 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>GlitchXshan Store – Premium OTT & AI Deals</title>
+<title>GlitchXshan Store</title>
 
 <style>
-/* ===== GLOBAL ===== */
-body {
-  margin: 0;
-  font-family: 'Segoe UI', Arial, sans-serif;
-  background: #f4f6fb;
-  color: #222;
+body{margin:0;font-family:Arial;background:#f4f6fb}
+
+/* HEADER */
+header{
+  position:sticky;top:0;z-index:100;
+  background:#111827;color:#fff;
+  padding:15px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.header-left{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+header img{width:55px}
+.cart-btn{
+  background:#000;
+  color:#fff;
+  padding:8px 14px;
+  border-radius:20px;
+  text-decoration:none;
+  font-weight:bold;
 }
 
-/* ===== HEADER ===== */
-.site-header {
-  text-align: center;
-  padding: 40px 15px;
-  background: linear-gradient(135deg, #111827, #1f2933);
-  color: #fff;
+/* PRODUCTS */
+.products{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+  padding:25px;
+  max-width:1100px;
+  margin:auto;
 }
-
-.site-logo {
-  width: 110px;
-  margin-bottom: 10px;
+.card{
+  background:#fff;
+  border-radius:12px;
+  padding:15px;
+  text-align:center;
+  box-shadow:0 8px 20px rgba(0,0,0,.08);
 }
+.card img{width:70px;height:70px;object-fit:contain}
+select{width:100%;padding:6px;margin:10px 0}
+.price{font-weight:bold;color:#e11d48;margin-bottom:10px}
 
-.site-title {
-  margin: 5px 0;
-  font-size: 28px;
-  font-weight: 700;
+/* BUTTONS */
+.btn{
+  width:100%;
+  padding:10px;
+  border:none;
+  border-radius:8px;
+  font-weight:bold;
+  cursor:pointer;
 }
+.buy{background:#16a34a;color:#fff;margin-bottom:8px}
+.cart{background:#000;color:#fff}
 
-.site-tagline {
-  font-size: 14px;
-  color: #cbd5e1;
-}
-
-/* ===== PRODUCTS GRID ===== */
-.products {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-  padding: 30px;
-  max-width: 1100px;
-  margin: auto;
-}
-
-/* ===== PRODUCT CARD ===== */
-.product-card {
-  background: #fff;
-  border-radius: 14px;
-  padding: 18px;
-  text-align: center;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.product-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 15px 35px rgba(0,0,0,0.12);
-}
-
-.product-card img {
-  width: 70px;
-  height: 70px;
-  object-fit: contain;
-  margin-bottom: 10px;
-}
-
-.product-card h3 {
-  margin: 10px 0 8px;
-  font-size: 16px;
-}
-
-/* ===== SELECT ===== */
-select {
-  width: 100%;
-  padding: 8px;
-  border-radius: 8px;
-  border: 1px solid #ddd;
-  margin-bottom: 10px;
-  font-size: 13px;
-}
-
-/* ===== PRICE ===== */
-.price {
-  font-size: 18px;
-  font-weight: bold;
-  color: #e11d48;
-  margin-bottom: 12px;
-}
-
-/* ===== BUTTON ===== */
-.buy-btn {
-  width: 100%;
-  padding: 10px;
-  background: linear-gradient(135deg, #000, #111);
-  color: #fff;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 14px;
-  transition: background 0.3s ease, transform 0.2s ease;
-}
-
-.buy-btn:hover {
-  background: linear-gradient(135deg, #1f2933, #000);
-  transform: scale(1.03);
-}
-
-/* ===== FOOTER ===== */
-.footer {
-  text-align: center;
-  font-size: 13px;
-  color: #666;
-  padding: 25px 10px;
+/* TOAST */
+.toast{
+  position:fixed;bottom:20px;left:50%;
+  transform:translateX(-50%);
+  background:#000;color:#fff;
+  padding:10px 18px;
+  border-radius:20px;
+  display:none;
 }
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
-<header class="site-header">
-  <img src="logo.jpg" class="site-logo" alt="GlitchXshan Logo">
-  <h1 class="site-title">GlitchXshan Store</h1>
-  <p class="site-tagline">Premium OTT & AI Deals</p>
+<header>
+  <div class="header-left">
+    <img src="assets/logo.jpg">
+    <div>
+      <b>GlitchXshan Store</b><br>
+      <small>Premium OTT & AI Deals</small>
+    </div>
+  </div>
+  <a href="cart.html" class="cart-btn">🛒 Cart</a>
 </header>
 
-<!-- PRODUCTS -->
 <div class="products">
 
-  <!-- PRIME VIDEO -->
-  <div class="product-card">
-    <img src="prime.png">
-    <h3>Prime Video</h3>
-    <select onchange="updatePrice(this)">
-      <option value="99">1 Month · With Ads – ₹99</option>
-      <option value="129">1 Month · No Ads – ₹129</option>
-      <option value="149">6 Months · With Ads – ₹149</option>
-      <option value="199">6 Months · No Ads – ₹199</option>
-    </select>
-    <div class="price">₹99</div>
-    <button class="buy-btn" onclick="buyNow(this)">Buy Now</button>
-  </div>
+<!-- PRIME -->
+<div class="card">
+<img src="assets/prime.png">
+<h3>Prime Video</h3>
+<select onchange="updatePrice(this)">
+<option value="99">1M Ads ₹99</option>
+<option value="129">1M No Ads ₹129</option>
+<option value="149">6M Ads ₹149</option>
+<option value="199">6M No Ads ₹199</option>
+</select>
+<div class="price">₹99</div>
+<button class="btn buy" onclick="buyNow(this)">Buy Now</button>
+<button class="btn cart" onclick="addToCart(this)">Add to Cart</button>
+</div>
 
-  <!-- SONY LIV -->
-  <div class="product-card">
-    <img src="sonyliv.png">
-    <h3>Sony LIV</h3>
-    <select onchange="updatePrice(this)">
-      <option value="99">1 Month Premium – ₹99</option>
-    </select>
-    <div class="price">₹99</div>
-    <button class="buy-btn" onclick="buyNow(this)">Buy Now</button>
-  </div>
+<!-- SONY -->
+<div class="card">
+<img src="assets/sonyliv.png">
+<h3>Sony LIV</h3>
+<select onchange="updatePrice(this)">
+<option value="99">1 Month ₹99</option>
+</select>
+<div class="price">₹99</div>
+<button class="btn buy" onclick="buyNow(this)">Buy Now</button>
+<button class="btn cart" onclick="addToCart(this)">Add to Cart</button>
+</div>
 
-  <!-- HOTSTAR -->
-  <div class="product-card">
-    <img src="hotstar.png">
-    <h3>Jio Hotstar</h3>
-    <select onchange="updatePrice(this)">
-      <option value="79">1 Month Super – ₹79</option>
-    </select>
-    <div class="price">₹79</div>
-    <button class="buy-btn" onclick="buyNow(this)">Buy Now</button>
-  </div>
+<!-- HOTSTAR -->
+<div class="card">
+<img src="assets/hotstar.png">
+<h3>Jio Hotstar</h3>
+<select onchange="updatePrice(this)">
+<option value="79">1 Month ₹79</option>
+</select>
+<div class="price">₹79</div>
+<button class="btn buy" onclick="buyNow(this)">Buy Now</button>
+<button class="btn cart" onclick="addToCart(this)">Add to Cart</button>
+</div>
 
-  <!-- CHATGPT -->
-  <div class="product-card">
-    <img src="chatgpt.png">
-    <h3>ChatGPT Plus</h3>
-    <select onchange="updatePrice(this)">
-      <option value="349">1 Month – ₹349</option>
-    </select>
-    <div class="price">₹349</div>
-    <button class="buy-btn" onclick="buyNow(this)">Buy Now</button>
-  </div>
+<!-- CHATGPT -->
+<div class="card">
+<img src="assets/chatgpt.png">
+<h3>ChatGPT Plus</h3>
+<select onchange="updatePrice(this)">
+<option value="349">1 Month ₹349</option>
+</select>
+<div class="price">₹349</div>
+<button class="btn buy" onclick="buyNow(this)">Buy Now</button>
+<button class="btn cart" onclick="addToCart(this)">Add to Cart</button>
+</div>
 
-  <!-- GEMINI -->
-  <div class="product-card">
-    <img src="gemini.png">
-    <h3>Gemini AI Pro</h3>
-    <select onchange="updatePrice(this)">
-      <option value="399">1 Year · 2TB – ₹399</option>
-    </select>
-    <div class="price">₹399</div>
-    <button class="buy-btn" onclick="buyNow(this)">Buy Now</button>
-  </div>
+<!-- GEMINI -->
+<div class="card">
+<img src="assets/gemini.png">
+<h3>Gemini AI Pro</h3>
+<select onchange="updatePrice(this)">
+<option value="399">1 Year ₹399</option>
+</select>
+<div class="price">₹399</div>
+<button class="btn buy" onclick="buyNow(this)">Buy Now</button>
+<button class="btn cart" onclick="addToCart(this)">Add to Cart</button>
+</div>
 
-  <!-- ADOBE -->
-  <div class="product-card">
-    <img src="adobe.png">
-    <h3>Adobe Creative Cloud</h3>
-    <select onchange="updatePrice(this)">
-      <option value="2999">1 Year – ₹2999</option>
-    </select>
-    <div class="price">₹2999</div>
-    <button class="buy-btn" onclick="buyNow(this)">Buy Now</button>
-  </div>
+<!-- ADOBE -->
+<div class="card">
+<img src="assets/adobe.png">
+<h3>Adobe Creative Cloud</h3>
+<select onchange="updatePrice(this)">
+<option value="2999">1 Year ₹2999</option>
+</select>
+<div class="price">₹2999</div>
+<button class="btn buy" onclick="buyNow(this)">Buy Now</button>
+<button class="btn cart" onclick="addToCart(this)">Add to Cart</button>
+</div>
 
-  <!-- PERPLEXITY -->
-  <div class="product-card">
-    <img src="perplexity.png">
-    <h3>Perplexity AI Pro</h3>
-    <select onchange="updatePrice(this)">
-      <option value="549">1 Year – ₹549</option>
-    </select>
-    <div class="price">₹549</div>
-    <button class="buy-btn" onclick="buyNow(this)">Buy Now</button>
-  </div>
+<!-- PERPLEXITY -->
+<div class="card">
+<img src="assets/perplexity.png">
+<h3>Perplexity AI Pro</h3>
+<select onchange="updatePrice(this)">
+<option value="549">1 Year ₹549</option>
+</select>
+<div class="price">₹549</div>
+<button class="btn buy" onclick="buyNow(this)">Buy Now</button>
+<button class="btn cart" onclick="addToCart(this)">Add to Cart</button>
+</div>
 
 </div>
 
-<!-- FOOTER -->
-<div class="footer">
-  Digital service only. No refund after delivery.
-</div>
+<div class="toast" id="toast">Added to cart ✅</div>
 
-<!-- ===== JS LOGIC ===== -->
 <script>
-function updatePrice(select) {
-  const card = select.closest('.product-card');
-  const priceBox = card.querySelector('.price');
-  priceBox.innerText = '₹' + select.value;
+function updatePrice(sel){
+  sel.parentElement.querySelector(".price").innerText="₹"+sel.value;
 }
 
-function buyNow(btn) {
-  const card = btn.closest('.product-card');
-  const product = card.querySelector('h3').innerText;
-  const price = card.querySelector('.price').innerText.replace('₹','');
+function buyNow(btn){
+  const card=btn.parentElement;
+  const product=card.querySelector("h3").innerText;
+  const price=card.querySelector(".price").innerText.replace("₹","");
+  window.location.href=`payment.html?product=${encodeURIComponent(product)}&price=${price}`;
+}
 
-  window.location.href =
-    `payment.html?product=${encodeURIComponent(product)}&price=${price}`;
+function addToCart(btn){
+  const card=btn.parentElement;
+  const product=card.querySelector("h3").innerText;
+  const price=Number(card.querySelector(".price").innerText.replace("₹",""));
+  let cart=JSON.parse(localStorage.getItem("cart"))||[];
+  let found=cart.find(i=>i.product===product);
+  if(found){found.qty++}else{cart.push({product,price,qty:1})}
+  localStorage.setItem("cart",JSON.stringify(cart));
+  let t=document.getElementById("toast");
+  t.style.display="block";
+  setTimeout(()=>t.style.display="none",1200);
 }
 </script>
 
