@@ -25,6 +25,11 @@ body{
   color:#e63946;
   margin:15px 0;
 }
+.items{
+  font-size:14px;
+  color:#333;
+  margin-bottom:10px;
+}
 .pay-btn{
   display:block;
   padding:12px;
@@ -63,6 +68,8 @@ body{
 <div class="box">
   <h2 id="product">Product</h2>
 
+  <div class="items" id="items"></div>
+
   <div class="amount">
     Amount: ₹<span id="price">0</span>
   </div>
@@ -85,10 +92,13 @@ body{
 const params = new URLSearchParams(window.location.search);
 const product = params.get("product") || "Order Payment";
 const price = params.get("price") || "0";
+const items = params.get("items") || "";
 
-/* SHOW PRODUCT + PRICE */
+/* SHOW DATA */
 document.getElementById("product").innerText = product;
 document.getElementById("price").innerText = price;
+document.getElementById("items").innerText =
+  items ? "Items: " + decodeURIComponent(items) : "";
 
 /* YOUR UPI DETAILS */
 const upiId = "shanmusic816@okhdfcbank";
@@ -119,7 +129,7 @@ function paid(){
   const msg =
     "Payment Done ✅\n\n" +
     "Order ID: " + orderId + "\n" +
-    "Product: " + product + "\n" +
+    (items ? "Items: " + decodeURIComponent(items) + "\n" : "") +
     "Amount: ₹" + price + "\n\n" +
     "I have attached the payment screenshot.\n" +
     "Please verify my payment.";
