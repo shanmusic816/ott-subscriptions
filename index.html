@@ -139,15 +139,19 @@ select {
 <div class="products">
 
   <div class="product-card">
-    <img src="prime.png">
-    <h3>Prime Video</h3>
-    <select onchange="this.nextElementSibling.innerText='₹'+this.value">
-      <option value="99">1 Month · With Ads – ₹99</option>
-      <option value="129">1 Month · No Ads – ₹129</option>
-    </select>
-    <div class="price">₹99</div>
-    <button class="buy-btn">Buy Now</button>
-  </div>
+  <img src="prime.png" alt="Prime Video">
+  <h3>Prime Video</h3>
+
+  <select onchange="this.nextElementSibling.innerText='₹'+this.value">
+    <option value="99">1 Month · With Ads – ₹99</option>
+    <option value="129">1 Month · No Ads – ₹129</option>
+    <option value="149">6 Months · With Ads – ₹149</option>
+    <option value="199">6 Months · No Ads – ₹199</option>
+  </select>
+
+  <div class="price">₹99</div>
+  <button class="buy-btn">Buy Now</button>
+</div>
 
   <div class="product-card">
     <img src="sonyliv.png">
