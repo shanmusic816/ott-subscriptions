@@ -92,7 +92,7 @@ body{
 const params = new URLSearchParams(window.location.search);
 const product = params.get("product") || "Order Payment";
 const price = params.get("price") || "0";
-const items = params.get("items") || "";
+const items = params.get("items") || (product + " x1");
 
 /* SHOW DATA */
 document.getElementById("product").innerText = product;
