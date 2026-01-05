@@ -1,132 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>IPTV Subscription | GlitchXshan</title>
-
-<style>
-body{
-  margin:0;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
-  color:#fff;
-}
-
-.container{
-  max-width:420px;
-  margin:30px auto;
-  background:#111;
-  border-radius:16px;
-  padding:20px;
-  box-shadow:0 10px 30px rgba(0,0,0,.6);
-}
-
-.logo{
-  display:block;
-  margin:10px auto;
-  width:120px;
-  border-radius:12px;
-}
-
-h1{
-  text-align:center;
-  margin:15px 0 5px;
-}
-
-.price{
-  text-align:center;
-  font-size:22px;
-  color:#00ffcc;
-  margin-bottom:15px;
-}
-
-.features{
-  font-size:14px;
-  line-height:1.7;
-  margin-bottom:20px;
-}
-
-.features li{
-  margin-bottom:6px;
-}
-
-.btn{
-  width:100%;
-  padding:14px;
-  margin-top:10px;
-  border:none;
-  border-radius:10px;
-  font-size:16px;
-  cursor:pointer;
-}
-
-.buy{
-  background:#00ffcc;
-  color:#000;
-  font-weight:bold;
-}
-
-.cart{
-  background:#333;
-  color:#fff;
-}
-
-.note{
-  text-align:center;
-  font-size:12px;
-  opacity:.8;
-  margin-top:12px;
-}
-</style>
+  <title>IPTV Subscription</title>
 </head>
 
 <body>
 
-<div class="container">
+<!-- IPTV CARD -->
+<div class="card">
+  <h2>IPTV Subscription</h2>
+  <p>₹100 / Month</p>
 
-  <!-- IPTV IMAGE -->
-  <img src="assets/iptv.jpeg" alt="IPTV" class="logo">
-
-  <h1>IPTV Subscription</h1>
-  <div class="price">₹100 / Month</div>
-
-  <ul class="features">
-    <li>📺 Works on Mobile / TV / PC</li>
-    <li>⏱ Instant Activation</li>
-    <li>👥 1 ID = 3 Devices</li>
-    <li>🗓 Validity: 1 Month</li>
-    <li>❌ No Refund After Delivery</li>
-  </ul>
-
-  <button class="btn buy" onclick="buyIPTV()">Buy Now</button>
-  <button class="btn cart" onclick="addIPTV()">Add to Cart</button>
-
-  <div class="note">
-    🛒 Select → 💳 Pay → 📲 WhatsApp → ✅ Delivered
-  </div>
-
+  <button onclick="buyIPTV()">Buy Now</button>
+  <button onclick="addIPTV()">Add to Cart</button>
 </div>
 
+<!-- ✅ SCRIPT HAMESHA BODY KE END ME -->
 <script>
-function buyIPTV(){
-
-  // 🔴 PURANA DATA CLEAR
-  localStorage.removeItem("cart");
-  localStorage.removeItem("singleProduct");
-
-  // ✅ NAYA PRODUCT SET
-  const product = {
-    name: "IPTV Subscription",
-    price: 100,
-    qty: 1
-  };
-
-  localStorage.setItem("singleProduct", JSON.stringify(product));
-
-  window.location.href = "payment.html";
-}
-</script>
-
 /* ADD TO CART */
 function addIPTV(){
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -134,12 +24,28 @@ function addIPTV(){
 
   if(found){
     found.qty += 1;
-  }else{
-    cart.push({name:"IPTV Subscription",price:100,qty:1});
+  } else {
+    cart.push({ name:"IPTV Subscription", price:100, qty:1 });
   }
 
   localStorage.setItem("cart", JSON.stringify(cart));
+  localStorage.removeItem("buyNowItem"); // 🔥 IMPORTANT
   alert("IPTV added to cart");
+}
+
+/* BUY NOW */
+function buyIPTV(){
+  const item = {
+    name: "IPTV Subscription",
+    price: 100,
+    qty: 1
+  };
+
+  // 🔥 CLEAR EVERYTHING ELSE
+  localStorage.removeItem("cart");
+  localStorage.setItem("buyNowItem", JSON.stringify(item));
+
+  window.location.href = "payment.html";
 }
 </script>
 
