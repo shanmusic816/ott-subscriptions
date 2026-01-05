@@ -7,23 +7,37 @@
 
 <style>
 body{
+  margin:0;
   font-family: Arial, sans-serif;
   background:#f4f6fb;
-  margin:0;
 }
 header{
   background:#000;
   color:#fff;
-  padding:20px;
-  text-align:center;
+  padding:15px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+header h1{
+  margin:0;
+  font-size:22px;
+}
+.cart-btn{
+  background:#fff;
+  color:#000;
+  padding:8px 14px;
+  border-radius:8px;
+  text-decoration:none;
+  font-weight:bold;
 }
 .products{
+  max-width:1100px;
+  margin:auto;
+  padding:25px;
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
   gap:20px;
-  padding:25px;
-  max-width:1100px;
-  margin:auto;
 }
 .card{
   background:#fff;
@@ -33,7 +47,7 @@ header{
   box-shadow:0 6px 15px rgba(0,0,0,0.1);
 }
 .card img{
-  width:80px;
+  width:70px;
   margin-bottom:10px;
 }
 .card h3{
@@ -42,15 +56,27 @@ header{
 .price{
   color:#e63946;
   font-weight:bold;
-  margin:5px 0 15px;
+  margin:8px 0;
+}
+button{
+  padding:8px 14px;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+  margin:5px;
 }
 .buy{
-  display:inline-block;
-  padding:10px 18px;
   background:#000;
   color:#fff;
-  text-decoration:none;
-  border-radius:8px;
+}
+.add{
+  background:#e0e0e0;
+}
+footer{
+  text-align:center;
+  padding:15px;
+  font-size:14px;
+  color:#555;
 }
 </style>
 </head>
@@ -59,78 +85,88 @@ header{
 
 <header>
   <h1>GlitchXshan Store</h1>
-  <p>Premium OTT & AI Deals</p>
+  <a class="cart-btn" href="cart.html">🛒 Cart</a>
 </header>
 
 <div class="products">
 
-  <!-- PRIME VIDEO -->
+  <!-- PRIME VIDEO PLANS -->
   <div class="card">
     <img src="prime.png">
-    <h3>Prime Video (1 Month)</h3>
+    <h3>Prime Video 1 Month (Ads)</h3>
     <div class="price">₹299</div>
-    <a class="buy"
-      href="payment.html?product=Prime%20Video%201%20Month&price=299&items=Prime%20Video%201%20Month%20x1">
-      Buy Now
-    </a>
+    <button class="add" onclick="addToCart('Prime Video 1 Month Ads',299)">Add to Cart</button>
+    <button class="buy" onclick="buyNow('Prime Video 1 Month Ads',299)">Buy Now</button>
+  </div>
+
+  <div class="card">
+    <img src="prime.png">
+    <h3>Prime Video 1 Month (No Ads)</h3>
+    <div class="price">₹349</div>
+    <button class="add" onclick="addToCart('Prime Video 1 Month No Ads',349)">Add to Cart</button>
+    <button class="buy" onclick="buyNow('Prime Video 1 Month No Ads',349)">Buy Now</button>
+  </div>
+
+  <div class="card">
+    <img src="prime.png">
+    <h3>Prime Video 6 Month (Ads)</h3>
+    <div class="price">₹699</div>
+    <button class="add" onclick="addToCart('Prime Video 6 Month Ads',699)">Add to Cart</button>
+    <button class="buy" onclick="buyNow('Prime Video 6 Month Ads',699)">Buy Now</button>
+  </div>
+
+  <div class="card">
+    <img src="prime.png">
+    <h3>Prime Video 6 Month (No Ads)</h3>
+    <div class="price">₹899</div>
+    <button class="add" onclick="addToCart('Prime Video 6 Month No Ads',899)">Add to Cart</button>
+    <button class="buy" onclick="buyNow('Prime Video 6 Month No Ads',899)">Buy Now</button>
   </div>
 
   <!-- SONY LIV -->
   <div class="card">
     <img src="sonyliv.png">
-    <h3>Sony LIV (1 Month)</h3>
+    <h3>Sony LIV 1 Month</h3>
     <div class="price">₹249</div>
-    <a class="buy"
-      href="payment.html?product=Sony%20LIV%201%20Month&price=249&items=Sony%20LIV%201%20Month%20x1">
-      Buy Now
-    </a>
+    <button class="add" onclick="addToCart('Sony LIV 1 Month',249)">Add to Cart</button>
+    <button class="buy" onclick="buyNow('Sony LIV 1 Month',249)">Buy Now</button>
   </div>
 
   <!-- JIO HOTSTAR -->
   <div class="card">
     <img src="hotstar.png">
-    <h3>Jio Hotstar (1 Month)</h3>
+    <h3>Jio Hotstar 1 Month</h3>
     <div class="price">₹199</div>
-    <a class="buy"
-      href="payment.html?product=Jio%20Hotstar%201%20Month&price=199&items=Jio%20Hotstar%201%20Month%20x1">
-      Buy Now
-    </a>
-  </div>
-
-  <!-- CHATGPT PLUS -->
-  <div class="card">
-    <img src="chatgpt.png">
-    <h3>ChatGPT Plus (1 Month)</h3>
-    <div class="price">₹249</div>
-    <a class="buy"
-      href="payment.html?product=ChatGPT%20Plus%201%20Month&price=249&items=ChatGPT%20Plus%201%20Month%20x1">
-      Buy Now
-    </a>
-  </div>
-
-  <!-- GEMINI AI PRO -->
-  <div class="card">
-    <img src="gemini.png">
-    <h3>Gemini AI Pro (1 Year)</h3>
-    <div class="price">₹299</div>
-    <a class="buy"
-      href="payment.html?product=Gemini%20AI%20Pro%201%20Year&price=299&items=Gemini%20AI%20Pro%201%20Year%20x1">
-      Buy Now
-    </a>
-  </div>
-
-  <!-- PERPLEXITY AI -->
-  <div class="card">
-    <img src="perplexity.png">
-    <h3>Perplexity AI Pro (1 Year)</h3>
-    <div class="price">₹549</div>
-    <a class="buy"
-      href="payment.html?product=Perplexity%20AI%20Pro%201%20Year&price=549&items=Perplexity%20AI%20Pro%201%20Year%20x1">
-      Buy Now
-    </a>
+    <button class="add" onclick="addToCart('Jio Hotstar 1 Month',199)">Add to Cart</button>
+    <button class="buy" onclick="buyNow('Jio Hotstar 1 Month',199)">Buy Now</button>
   </div>
 
 </div>
+
+<footer>
+  Made with ❤️ by Shan
+</footer>
+
+<script>
+function addToCart(name,price){
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const found = cart.find(i => i.name === name);
+  if(found){
+    found.qty++;
+  }else{
+    cart.push({name,price,qty:1});
+  }
+  localStorage.setItem("cart",JSON.stringify(cart));
+  alert("Added to cart");
+}
+
+function buyNow(name,price){
+  window.location.href =
+    "payment.html?product="+encodeURIComponent(name)+
+    "&price="+price+
+    "&items="+encodeURIComponent(name+" x1");
+}
+</script>
 
 </body>
 </html>
