@@ -58,6 +58,11 @@ header h1{
   font-weight:bold;
   margin:8px 0;
 }
+select{
+  width:100%;
+  padding:8px;
+  margin:10px 0;
+}
 button{
   padding:8px 14px;
   border:none;
@@ -65,13 +70,8 @@ button{
   cursor:pointer;
   margin:5px;
 }
-.buy{
-  background:#000;
-  color:#fff;
-}
-.add{
-  background:#e0e0e0;
-}
+.buy{ background:#000; color:#fff; }
+.add{ background:#e0e0e0; }
 footer{
   text-align:center;
   padding:15px;
@@ -90,37 +90,20 @@ footer{
 
 <div class="products">
 
-  <!-- PRIME VIDEO PLANS -->
+  <!-- PRIME VIDEO DROPDOWN -->
   <div class="card">
     <img src="prime.png">
-    <h3>Prime Video 1 Month (Ads)</h3>
-    <div class="price">₹299</div>
-    <button class="add" onclick="addToCart('Prime Video 1 Month Ads',299)">Add to Cart</button>
-    <button class="buy" onclick="buyNow('Prime Video 1 Month Ads',299)">Buy Now</button>
-  </div>
+    <h3>Prime Video</h3>
 
-  <div class="card">
-    <img src="prime.png">
-    <h3>Prime Video 1 Month (No Ads)</h3>
-    <div class="price">₹349</div>
-    <button class="add" onclick="addToCart('Prime Video 1 Month No Ads',349)">Add to Cart</button>
-    <button class="buy" onclick="buyNow('Prime Video 1 Month No Ads',349)">Buy Now</button>
-  </div>
+    <select id="primePlan">
+      <option value="Prime Video 1 Month Ads|299">1 Month (Ads) – ₹299</option>
+      <option value="Prime Video 1 Month No Ads|349">1 Month (No Ads) – ₹349</option>
+      <option value="Prime Video 6 Month Ads|699">6 Month (Ads) – ₹699</option>
+      <option value="Prime Video 6 Month No Ads|899">6 Month (No Ads) – ₹899</option>
+    </select>
 
-  <div class="card">
-    <img src="prime.png">
-    <h3>Prime Video 6 Month (Ads)</h3>
-    <div class="price">₹699</div>
-    <button class="add" onclick="addToCart('Prime Video 6 Month Ads',699)">Add to Cart</button>
-    <button class="buy" onclick="buyNow('Prime Video 6 Month Ads',699)">Buy Now</button>
-  </div>
-
-  <div class="card">
-    <img src="prime.png">
-    <h3>Prime Video 6 Month (No Ads)</h3>
-    <div class="price">₹899</div>
-    <button class="add" onclick="addToCart('Prime Video 6 Month No Ads',899)">Add to Cart</button>
-    <button class="buy" onclick="buyNow('Prime Video 6 Month No Ads',899)">Buy Now</button>
+    <button class="add" onclick="addPrime()">Add to Cart</button>
+    <button class="buy" onclick="buyPrime()">Buy Now</button>
   </div>
 
   <!-- SONY LIV -->
@@ -141,6 +124,24 @@ footer{
     <button class="buy" onclick="buyNow('Jio Hotstar 1 Month',199)">Buy Now</button>
   </div>
 
+  <!-- CHATGPT PLUS -->
+  <div class="card">
+    <img src="chatgpt.png">
+    <h3>ChatGPT Plus 1 Month</h3>
+    <div class="price">₹249</div>
+    <button class="add" onclick="addToCart('ChatGPT Plus 1 Month',249)">Add to Cart</button>
+    <button class="buy" onclick="buyNow('ChatGPT Plus 1 Month',249)">Buy Now</button>
+  </div>
+
+  <!-- GEMINI AI PRO -->
+  <div class="card">
+    <img src="gemini.png">
+    <h3>Gemini AI Pro 1 Year</h3>
+    <div class="price">₹299</div>
+    <button class="add" onclick="addToCart('Gemini AI Pro 1 Year',299)">Add to Cart</button>
+    <button class="buy" onclick="buyNow('Gemini AI Pro 1 Year',299)">Buy Now</button>
+  </div>
+
 </div>
 
 <footer>
@@ -151,11 +152,8 @@ footer{
 function addToCart(name,price){
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
   const found = cart.find(i => i.name === name);
-  if(found){
-    found.qty++;
-  }else{
-    cart.push({name,price,qty:1});
-  }
+  if(found){ found.qty++; }
+  else{ cart.push({name,price,qty:1}); }
   localStorage.setItem("cart",JSON.stringify(cart));
   alert("Added to cart");
 }
@@ -165,6 +163,16 @@ function buyNow(name,price){
     "payment.html?product="+encodeURIComponent(name)+
     "&price="+price+
     "&items="+encodeURIComponent(name+" x1");
+}
+
+/* PRIME FUNCTIONS */
+function addPrime(){
+  const val = document.getElementById("primePlan").value.split("|");
+  addToCart(val[0], val[1]);
+}
+function buyPrime(){
+  const val = document.getElementById("primePlan").value.split("|");
+  buyNow(val[0], val[1]);
 }
 </script>
 
