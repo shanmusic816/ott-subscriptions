@@ -1,147 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
 <title>Payment</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<style>
-body{
-  font-family: Arial, sans-serif;
-  background:#f4f6fb;
-  padding:30px;
-}
-.box{
-  max-width:420px;
-  margin:auto;
-  background:#fff;
-  padding:25px;
-  border-radius:12px;
-  text-align:center;
-  box-shadow:0 8px 20px rgba(0,0,0,0.1);
-}
-.amount{
-  font-size:22px;
-  color:#e63946;
-  margin:15px 0;
-}
-.items{
-  font-size:14px;
-  color:#333;
-  margin-bottom:10px;
-}
-.pay-btn{
-  display:block;
-  padding:12px;
-  background:green;
-  color:#fff;
-  border-radius:8px;
-  text-decoration:none;
-  margin:15px 0;
-  font-weight:bold;
-}
-.qr img{
-  width:200px;
-  margin-top:15px;
-}
-.note{
-  font-size:13px;
-  color:#666;
-  margin-top:10px;
-}
-.done-btn{
-  margin-top:20px;
-  padding:12px;
-  width:100%;
-  background:#000;
-  color:#fff;
-  border:none;
-  border-radius:8px;
-  cursor:pointer;
-  font-size:15px;
-}
-</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-
 <body>
 
-<div class="box">
-  <h2 id="product">Product</h2>
+<h2>Payment</h2>
+<p>Order ID: <span id="oid"></span></p>
+<p>Total Amount: ₹<span id="amt"></span></p>
 
-  <div class="items" id="items"></div>
-
-  <div class="amount">
-    Amount: ₹<span id="price">0</span>
-  </div>
-
-  <!-- PAY VIA UPI -->
-  <a id="upiBtn" class="pay-btn">Pay via UPI App</a>
-
-  <!-- QR CODE -->
-  <div class="qr">
-    <img id="qrImg" alt="UPI QR Code">
-    <div class="note">Scan QR from any UPI app</div>
-  </div>
-
-  <!-- CONFIRM -->
-  <button class="done-btn" onclick="paid()">I Have Paid</button>
-</div>
+<button onclick="openWhatsApp()">I Have Paid</button>
 
 <script>
-/* READ DATA FROM URL */
-const params = new URLSearchParams(window.location.search);
-const product = params.get("product") || "Order Payment";
-const price = params.get("price") || "0";
-const items = params.get("items") || (product + " x1");
+const orderId="GX-"+Math.floor(100000+Math.random()*900000);
+document.getElementById("oid").innerText=orderId;
 
-/* SHOW DATA */
-document.getElementById("product").innerText = product;
-document.getElementById("price").innerText = price;
-document.getElementById("items").innerText =
-  items ? "Items: " + decodeURIComponent(items) : "";
+const buyNow=JSON.parse(localStorage.getItem("buyNowItem"));
+const cart=JSON.parse(localStorage.getItem("cart"))||[];
 
-/* YOUR UPI DETAILS */
-const upiId = "shanmusic816@okhdfcbank";
-const storeName = "GlitchXshan Store";
+let items=[];
+let total=0;
 
-/* CREATE UPI LINK */
-const upiLink =
-  `upi://pay?pa=${upiId}&pn=${encodeURIComponent(storeName)}&am=${price}&cu=INR`;
+if(buyNow){
+  items.push(buyNow.name+" x"+buyNow.qty);
+  total=buyNow.price*buyNow.qty;
+}else{
+  cart.forEach(i=>{
+    items.push(i.name+" x"+i.qty);
+    total+=i.price*i.qty;
+  });
+}
 
-/* SET UPI BUTTON */
-document.getElementById("upiBtn").href = upiLink;
+document.getElementById("amt").innerText=total;
 
-/* GENERATE QR */
-document.getElementById("qrImg").src =
-  "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" +
-  encodeURIComponent(upiLink);
+const list=items.map((i,n)=>(n+1)+". "+i).join("\n");
 
-/* ORDER ID */
-const orderId = "GX-" + Date.now().toString().slice(-6);
+function openWhatsApp(){
+  const msg=
+"Payment Done\n\n"+
+"Order ID: "+orderId+"\n"+
+"Items:\n"+list+"\n\n"+
+"Amount: ₹"+total+"\n\n"+
+"UPI Txn ID:\nScreenshot attached.";
 
-/* WHATSAPP NUMBER (NO +) */
-const phone = "918102549120";
-
-/* AFTER PAYMENT */
-function paid(){
-  alert("Payment submitted. Opening WhatsApp…");
-
-  const itemList = items.split(", ").map((item, index) => {
-  return (index + 1) + ". " + item;
-}).join("\n");
-
-const msg =
-  "Payment Done\n\n" +
-  "Order ID: " + orderId + "\n" +
-  "Items:\n" + itemList + "\n\n" +
-  "Amount: ₹" + price + "\n\n" +
-  "UPI Txn ID:\n" +
-  "Screenshot attached.";
-
-  const url =
-    "https://wa.me/" + phone + "?text=" + encodeURIComponent(msg);
-
-  window.location.href = url;
+  window.location.href=
+"https://wa.me/918102549120?text="+encodeURIComponent(msg);
 }
 </script>
 
