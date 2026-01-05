@@ -270,3 +270,59 @@ body{
   border-radius:14px;
   font-weight:500;
 }
+/* PRODUCT GRID FIX */
+.products,
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  align-items: stretch;
+}
+
+/* PRODUCT CARD */
+.product-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+/* PRODUCT IMAGE */
+.product-img {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+  margin-bottom: 12px;
+}
+
+/* PRICE */
+.price {
+  font-size: 18px;
+  font-weight: bold;
+  color: #e53935;
+  margin: 10px 0;
+}
+
+/* BUTTON STYLE (View Details / Buy / Add) */
+.btn,
+.buy-btn,
+.view-btn {
+  display: inline-block;
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  background: linear-gradient(135deg, #000, #333);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 10px;
+  transition: 0.3s ease;
+}
+
+.btn:hover,
+.buy-btn:hover,
+.view-btn:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #111, #000);
+}
