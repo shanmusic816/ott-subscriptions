@@ -4,138 +4,133 @@
 <meta charset="UTF-8">
 <title>GlitchXshan Store</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="style.css">
+
+<style>
+body{
+  font-family: Arial, sans-serif;
+  background:#f4f6fb;
+  margin:0;
+}
+header{
+  background:#000;
+  color:#fff;
+  padding:20px;
+  text-align:center;
+}
+.products{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:20px;
+  padding:25px;
+  max-width:1100px;
+  margin:auto;
+}
+.card{
+  background:#fff;
+  border-radius:12px;
+  padding:18px;
+  text-align:center;
+  box-shadow:0 6px 15px rgba(0,0,0,0.1);
+}
+.card img{
+  width:80px;
+  margin-bottom:10px;
+}
+.card h3{
+  margin:10px 0 5px;
+}
+.price{
+  color:#e63946;
+  font-weight:bold;
+  margin:5px 0 15px;
+}
+.buy{
+  display:inline-block;
+  padding:10px 18px;
+  background:#000;
+  color:#fff;
+  text-decoration:none;
+  border-radius:8px;
+}
+</style>
 </head>
 
 <body>
 
-<header class="site-header">
-  <img src="logo.jpg" class="site-logo">
+<header>
   <h1>GlitchXshan Store</h1>
   <p>Premium OTT & AI Deals</p>
-  <a href="cart.html" class="cart-btn">🛒 Cart (<span id="cartCount">0</span>)</a>
 </header>
 
 <div class="products">
 
-<!-- PRIME -->
-<div class="product-card">
-  <img src="prime.png">
-  <h3>Prime Video</h3>
-  <select onchange="updatePrice(this)">
-    <option value="99">1 Month With Ads – ₹99</option>
-    <option value="129">1 Month No Ads – ₹129</option>
-    <option value="299">6 Months – ₹299</option>
-    <option value="499">12 Months – ₹499</option>
-  </select>
-  <div class="price">₹99</div>
-  <button onclick="buyNow('Prime Video', this)">Buy Now</button>
-  <button class="cart" onclick="addToCart('Prime Video', this)">Add to Cart</button>
-</div>
+  <!-- PRIME VIDEO -->
+  <div class="card">
+    <img src="prime.png">
+    <h3>Prime Video (1 Month)</h3>
+    <div class="price">₹299</div>
+    <a class="buy"
+      href="payment.html?product=Prime%20Video%201%20Month&price=299&items=Prime%20Video%201%20Month%20x1">
+      Buy Now
+    </a>
+  </div>
 
-<!-- SONY -->
-<div class="product-card">
-  <img src="sonyliv.png">
-  <h3>Sony LIV</h3>
-  <select onchange="updatePrice(this)">
-    <option value="99">1 Month – ₹99</option>
-  </select>
-  <div class="price">₹99</div>
-  <button onclick="buyNow('Sony LIV', this)">Buy Now</button>
-  <button class="cart" onclick="addToCart('Sony LIV', this)">Add to Cart</button>
-</div>
+  <!-- SONY LIV -->
+  <div class="card">
+    <img src="sonyliv.png">
+    <h3>Sony LIV (1 Month)</h3>
+    <div class="price">₹249</div>
+    <a class="buy"
+      href="payment.html?product=Sony%20LIV%201%20Month&price=249&items=Sony%20LIV%201%20Month%20x1">
+      Buy Now
+    </a>
+  </div>
 
-<!-- HOTSTAR -->
-<div class="product-card">
-  <img src="hotstar.png">
-  <h3>Jio Hotstar</h3>
-  <select onchange="updatePrice(this)">
-    <option value="79">1 Month – ₹79</option>
-  </select>
-  <div class="price">₹79</div>
-  <button onclick="buyNow('Jio Hotstar', this)">Buy Now</button>
-  <button class="cart" onclick="addToCart('Jio Hotstar', this)">Add to Cart</button>
-</div>
+  <!-- JIO HOTSTAR -->
+  <div class="card">
+    <img src="hotstar.png">
+    <h3>Jio Hotstar (1 Month)</h3>
+    <div class="price">₹199</div>
+    <a class="buy"
+      href="payment.html?product=Jio%20Hotstar%201%20Month&price=199&items=Jio%20Hotstar%201%20Month%20x1">
+      Buy Now
+    </a>
+  </div>
 
-<!-- CHATGPT -->
-<div class="product-card">
-  <img src="chatgpt.png">
-  <h3>ChatGPT Plus</h3>
-  <select onchange="updatePrice(this)">
-    <option value="349">1 Month – ₹349</option>
-  </select>
-  <div class="price">₹349</div>
-  <button onclick="buyNow('ChatGPT Plus', this)">Buy Now</button>
-  <button class="cart" onclick="addToCart('ChatGPT Plus', this)">Add to Cart</button>
-</div>
+  <!-- CHATGPT PLUS -->
+  <div class="card">
+    <img src="chatgpt.png">
+    <h3>ChatGPT Plus (1 Month)</h3>
+    <div class="price">₹249</div>
+    <a class="buy"
+      href="payment.html?product=ChatGPT%20Plus%201%20Month&price=249&items=ChatGPT%20Plus%201%20Month%20x1">
+      Buy Now
+    </a>
+  </div>
 
-<!-- GEMINI -->
-<div class="product-card">
-  <img src="gemini.png">
-  <h3>Gemini AI Pro</h3>
-  <select onchange="updatePrice(this)">
-    <option value="399">1 Year – ₹399</option>
-  </select>
-  <div class="price">₹399</div>
-  <button onclick="buyNow('Gemini AI Pro', this)">Buy Now</button>
-  <button class="cart" onclick="addToCart('Gemini AI Pro', this)">Add to Cart</button>
-</div>
+  <!-- GEMINI AI PRO -->
+  <div class="card">
+    <img src="gemini.png">
+    <h3>Gemini AI Pro (1 Year)</h3>
+    <div class="price">₹299</div>
+    <a class="buy"
+      href="payment.html?product=Gemini%20AI%20Pro%201%20Year&price=299&items=Gemini%20AI%20Pro%201%20Year%20x1">
+      Buy Now
+    </a>
+  </div>
 
-<!-- ADOBE -->
-<div class="product-card">
-  <img src="adobe.png">
-  <h3>Adobe Creative Cloud</h3>
-  <select onchange="updatePrice(this)">
-    <option value="2999">1 Year – ₹2999</option>
-  </select>
-  <div class="price">₹2999</div>
-  <button onclick="buyNow('Adobe Creative Cloud', this)">Buy Now</button>
-  <button class="cart" onclick="addToCart('Adobe Creative Cloud', this)">Add to Cart</button>
-</div>
-
-<!-- PERPLEXITY -->
-<div class="product-card">
-  <img src="perplexity.png">
-  <h3>Perplexity AI Pro</h3>
-  <select onchange="updatePrice(this)">
-    <option value="549">1 Year – ₹549</option>
-  </select>
-  <div class="price">₹549</div>
-  <button onclick="buyNow('Perplexity AI Pro', this)">Buy Now</button>
-  <button class="cart" onclick="addToCart('Perplexity AI Pro', this)">Add to Cart</button>
-</div>
+  <!-- PERPLEXITY AI -->
+  <div class="card">
+    <img src="perplexity.png">
+    <h3>Perplexity AI Pro (1 Year)</h3>
+    <div class="price">₹549</div>
+    <a class="buy"
+      href="payment.html?product=Perplexity%20AI%20Pro%201%20Year&price=549&items=Perplexity%20AI%20Pro%201%20Year%20x1">
+      Buy Now
+    </a>
+  </div>
 
 </div>
-
-<footer class="footer">
-  Digital service only. No refund after delivery.
-</footer>
-
-<script>
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
-updateCartCount();
-
-function updatePrice(select){
-  select.parentElement.querySelector(".price").innerText = "₹" + select.value;
-}
-
-function buyNow(name, btn){
-  const price = btn.parentElement.querySelector("select").value;
-  window.location.href = `payment.html?product=${encodeURIComponent(name)}&price=${price}`;
-}
-
-function addToCart(name, btn){
-  const price = btn.parentElement.querySelector("select").value;
-  cart.push({name, price});
-  localStorage.setItem("cart", JSON.stringify(cart));
-  updateCartCount();
-  alert("Added to cart");
-}
-
-function updateCartCount(){
-  document.getElementById("cartCount").innerText = cart.length;
-}
-</script>
 
 </body>
 </html>
