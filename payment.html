@@ -126,13 +126,17 @@ const phone = "918102549120";
 function paid(){
   alert("Payment submitted. Opening WhatsApp…");
 
-  const msg =
-    "Payment Done ✅\n\n" +
-    "Order ID: " + orderId + "\n" +
-    (items ? "Items: " + decodeURIComponent(items) + "\n" : "") +
-    "Amount: ₹" + price + "\n\n" +
-    "I have attached the payment screenshot.\n" +
-    "Please verify my payment.";
+  const itemList = items.split(", ").map((item, index) => {
+  return (index + 1) + ". " + item;
+}).join("\n");
+
+const msg =
+  "Payment Done\n\n" +
+  "Order ID: " + orderId + "\n" +
+  "Items:\n" + itemList + "\n\n" +
+  "Amount: ₹" + price + "\n\n" +
+  "UPI Txn ID:\n" +
+  "Screenshot attached.";
 
   const url =
     "https://wa.me/" + phone + "?text=" + encodeURIComponent(msg);
