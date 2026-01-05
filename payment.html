@@ -70,19 +70,22 @@ h2{margin-top:0;}
     Amount: ₹<span id="amount">0</span>
   </div>
 
+  <!-- UPI BUTTON -->
   <a id="upiBtn" class="pay-btn">Pay via UPI App</a>
 
+  <!-- QR CODE -->
   <div class="qr">
     <img id="qrImg" alt="UPI QR Code">
     <div class="note">Scan QR using any UPI app</div>
   </div>
 
+  <!-- WHATSAPP -->
   <button class="done-btn" onclick="openWhatsApp()">
     I Have Paid
   </button>
 
   <div class="note">
-    Please send payment screenshot on WhatsApp after payment.
+    After payment, please send screenshot on WhatsApp.
   </div>
 </div>
 
@@ -94,7 +97,7 @@ const orderId = "GX-" + Math.floor(100000 + Math.random() * 900000);
 document.getElementById("orderId").innerText = orderId;
 
 /* ======================
-   READ DATA
+   READ STORAGE
 ====================== */
 const cart = JSON.parse(localStorage.getItem("cart")) || [];
 const buyNowItem = JSON.parse(localStorage.getItem("buyNowItem"));
@@ -111,7 +114,7 @@ if (cart.length > 0) {
     total += item.price * item.qty;
   });
 }
-/* BUY NOW ONLY IF CART EMPTY */
+/* BUY NOW IF CART EMPTY */
 else if (buyNowItem) {
   items.push(`${buyNowItem.name} x${buyNowItem.qty}`);
   total = buyNowItem.price * buyNowItem.qty;
@@ -122,27 +125,28 @@ if (total === 0) {
   alert("No order found. Please go back and try again.");
 }
 
-/* DISPLAY */
+/* DISPLAY AMOUNT */
 document.getElementById("amount").innerText = total;
 
 /* ======================
-   UPI DETAILS
+   FORCE UPI + QR (FIX)
 ====================== */
-const upiId = "shanmusic816@okhdfcbank";   // ✅ tumhara UPI
-const payName = "GlitchXshan Store";
+if (total > 0) {
+  const upiId = "shanmusic816@okhdfcbank"; // ✅ tumhara UPI
+  const payName = "GlitchXshan Store";
 
-/* CREATE UPI LINK */
-const upiLink =
-  `upi://pay?pa=${upiId}&pn=${encodeURIComponent(payName)}&am=${total}&cu=INR`;
+  const upiLink =
+    `upi://pay?pa=${upiId}&pn=${encodeURIComponent(payName)}&am=${total}&cu=INR`;
 
-/* SET BUTTON + QR */
-document.getElementById("upiBtn").href = upiLink;
-document.getElementById("qrImg").src =
-  "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=" +
-  encodeURIComponent(upiLink);
+  document.getElementById("upiBtn").href = upiLink;
+
+  document.getElementById("qrImg").src =
+    "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=" +
+    encodeURIComponent(upiLink);
+}
 
 /* ======================
-   WHATSAPP
+   WHATSAPP MESSAGE
 ====================== */
 function openWhatsApp(){
   if(total === 0){
