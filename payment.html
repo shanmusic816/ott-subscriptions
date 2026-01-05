@@ -90,31 +90,25 @@ h2{margin-top:0;}
 </div>
 
 <script>
-/* ======================
-   ORDER ID
-====================== */
+/* ORDER ID */
 const orderId = "GX-" + Math.floor(100000 + Math.random() * 900000);
 document.getElementById("orderId").innerText = orderId;
 
-/* ======================
-   READ STORAGE
-====================== */
+/* READ STORAGE */
 const cart = JSON.parse(localStorage.getItem("cart")) || [];
 const buyNowItem = JSON.parse(localStorage.getItem("buyNowItem"));
 
 let items = [];
 let total = 0;
 
-/* ======================
-   PRIORITY: CART FIRST
-====================== */
+/* CART FIRST */
 if (cart.length > 0) {
   cart.forEach(item => {
     items.push(`${item.name} x${item.qty}`);
     total += item.price * item.qty;
   });
 }
-/* BUY NOW IF CART EMPTY */
+/* BUY NOW */
 else if (buyNowItem) {
   items.push(`${buyNowItem.name} x${buyNowItem.qty}`);
   total = buyNowItem.price * buyNowItem.qty;
@@ -122,51 +116,40 @@ else if (buyNowItem) {
 
 /* SAFETY */
 if (total === 0) {
-  alert("No order found. Please go back and try again.");
+  alert("No order found. Please go back.");
 }
 
-/* DISPLAY AMOUNT */
+/* SHOW AMOUNT */
 document.getElementById("amount").innerText = total;
 
-/* ======================
-   FORCE UPI + QR (FIX)
-====================== */
-if (total > 0) {
-  const upiId = "shanmusic816@okhdfcbank"; // ✅ tumhara UPI
-  const payName = "GlitchXshan Store";
+/* UPI + QR */
+const upiId = "shanmusic816@okhdfcbank";
+const payName = "GlitchXshan Store";
+const upiLink =
+  `upi://pay?pa=${upiId}&pn=${encodeURIComponent(payName)}&am=${total}&cu=INR`;
 
-  const upiLink =
-    `upi://pay?pa=${upiId}&pn=${encodeURIComponent(payName)}&am=${total}&cu=INR`;
+document.getElementById("qrImg").src =
+  "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=" +
+  encodeURIComponent(upiLink);
 
-  document.getElementById("upiBtn").href = upiLink;
-
-  document.getElementById("qrImg").src =
-    "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=" +
-    encodeURIComponent(upiLink);
-}
-
-/* ======================
-   WHATSAPP MESSAGE
-====================== */
+/* WHATSAPP */
 function openWhatsApp(){
-  if(total === 0){
-    alert("Payment data missing.");
-    return;
-  }
-
-  const itemList = items.map((i,n)=>`${n+1}. ${i}`).join("\n");
+  const phone = "918102549120";
 
   const msg =
-"Payment Done\n\n"+
-"Order ID: "+orderId+"\n"+
-"Items:\n"+itemList+"\n\n"+
-"Amount: ₹"+total+"\n\n"+
-"UPI Txn ID:\nScreenshot attached.";
+`Payment Done ✅
+
+Order ID: ${orderId}
+Items:
+${items.map((i,idx)=>`${idx+1}. ${i}`).join("\n")}
+
+Amount: ₹${total}
+
+Screenshot attached.`;
 
   window.location.href =
-    "https://wa.me/918102549120?text=" + encodeURIComponent(msg);
+    "https://wa.me/" + phone + "?text=" + encodeURIComponent(msg);
 }
 </script>
-
 </body>
 </html>
