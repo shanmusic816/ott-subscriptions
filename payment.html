@@ -127,7 +127,7 @@ const upiId = "shanmusic816@okhdfcbank";
 const payName = "GlitchXshan Store";
 const upiLink =
   `upi://pay?pa=${upiId}&pn=${encodeURIComponent(payName)}&am=${total}&cu=INR`;
-
+document.getElementById("upiBtn").href = upiLink;
 document.getElementById("qrImg").src =
   "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=" +
   encodeURIComponent(upiLink);
