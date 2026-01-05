@@ -1,51 +1,126 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
 <title>Payment</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#f2f2f2;
+}
+.box{
+  max-width:420px;
+  background:#fff;
+  margin:40px auto;
+  padding:25px;
+  border-radius:12px;
+  text-align:center;
+  box-shadow:0 4px 12px rgba(0,0,0,0.15);
+}
+h2{margin-top:0;}
+.amount{
+  font-size:22px;
+  color:#e53935;
+  margin:15px 0;
+}
+.pay-btn{
+  display:block;
+  background:#2e7d32;
+  color:#fff;
+  padding:12px;
+  border-radius:8px;
+  text-decoration:none;
+  font-size:16px;
+  margin-top:15px;
+}
+.done-btn{
+  margin-top:20px;
+  width:100%;
+  padding:12px;
+  background:#000;
+  color:#fff;
+  border:none;
+  border-radius:8px;
+  font-size:15px;
+  cursor:pointer;
+}
+.note{
+  font-size:13px;
+  color:#555;
+  margin-top:10px;
+}
+</style>
 </head>
+
 <body>
 
-<h2>Payment</h2>
-<p>Order ID: <span id="oid"></span></p>
-<p>Total Amount: ₹<span id="amt"></span></p>
+<div class="box">
+  <h2>Complete Payment</h2>
 
-<button onclick="openWhatsApp()">I Have Paid</button>
+  <p><strong>Order ID:</strong> <span id="orderId">---</span></p>
+
+  <div class="amount">
+    Amount: ₹<span id="amount">0</span>
+  </div>
+
+  <button class="done-btn" onclick="openWhatsApp()">
+    I Have Paid
+  </button>
+
+  <div class="note">
+    After payment, click the button to send details on WhatsApp.
+  </div>
+</div>
 
 <script>
-const orderId="GX-"+Math.floor(100000+Math.random()*900000);
-document.getElementById("oid").innerText=orderId;
+/* ORDER ID */
+const orderId = "GX-" + Math.floor(100000 + Math.random() * 900000);
 
-const buyNow=JSON.parse(localStorage.getItem("buyNowItem"));
-const cart=JSON.parse(localStorage.getItem("cart"))||[];
+/* READ DATA */
+const buyNowItem = JSON.parse(localStorage.getItem("buyNowItem"));
+const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-let items=[];
-let total=0;
+let items = [];
+let total = 0;
 
-if(buyNow){
-  items.push(buyNow.name+" x"+buyNow.qty);
-  total=buyNow.price*buyNow.qty;
-}else{
-  cart.forEach(i=>{
-    items.push(i.name+" x"+i.qty);
-    total+=i.price*i.qty;
+/* BUY NOW */
+if (buyNowItem) {
+  items.push(`${buyNowItem.name} x${buyNowItem.qty}`);
+  total = buyNowItem.price * buyNowItem.qty;
+}
+/* CART */
+else if (cart.length > 0) {
+  cart.forEach(item => {
+    items.push(`${item.name} x${item.qty}`);
+    total += item.price * item.qty;
   });
 }
 
-document.getElementById("amt").innerText=total;
+/* DISPLAY */
+document.getElementById("orderId").innerText = orderId;
+document.getElementById("amount").innerText = total;
 
-const list=items.map((i,n)=>(n+1)+". "+i).join("\n");
-
+/* WHATSAPP */
 function openWhatsApp(){
-  const msg=
+  if(total === 0){
+    alert("No order found. Please go back.");
+    return;
+  }
+
+  const list = items.map((i,n)=>`${n+1}. ${i}`).join("\n");
+
+  const msg =
 "Payment Done\n\n"+
 "Order ID: "+orderId+"\n"+
 "Items:\n"+list+"\n\n"+
 "Amount: ₹"+total+"\n\n"+
 "UPI Txn ID:\nScreenshot attached.";
 
-  window.location.href=
-"https://wa.me/918102549120?text="+encodeURIComponent(msg);
+  window.location.href =
+    "https://wa.me/918102549120?text=" + encodeURIComponent(msg);
 }
 </script>
 
