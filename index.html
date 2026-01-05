@@ -90,31 +90,40 @@ footer{
 
 <div class="products">
 
-  <!-- PRIME VIDEO DROPDOWN -->
-  <div class="card">
-    <img src="prime.png">
-    <h3>Prime Video</h3>
+<!-- PRIME VIDEO -->
+<div class="card">
+  <img src="prime.png" alt="Prime Video">
+  <h3>Prime Video</h3>
 
-    <select id="primePlan">
-      <option value="Prime Video 1 Month Ads|299">1 Month (Ads) – ₹129</option>
-      <option value="Prime Video 1 Month No Ads|349">1 Month (No Ads) – ₹149</option>
-      <option value="Prime Video 6 Month Ads|699">6 Month (Ads) – ₹249</option>
-      <option value="Prime Video 6 Month No Ads|899">6 Month (No Ads) – ₹349</option>
-    </select>
+  <select id="primePlan">
+    <option value="">Select Plan</option>
+    <option value="Prime Video 1 Month (Ads)|129">
+      1 Month (With Ads) – ₹129
+    </option>
+    <option value="Prime Video 1 Month (No Ads)|149">
+      1 Month (No Ads) – ₹149
+    </option>
+    <option value="Prime Video 6 Month (Ads)|249">
+      6 Month (With Ads) – ₹249
+    </option>
+    <option value="Prime Video 6 Month (No Ads)|349">
+      6 Month (No Ads) – ₹349
+    </option>
+  </select>
 
-    <button class="add" onclick="addPrime()">Add to Cart</button>
-    <button class="buy" onclick="buyPrime()">Buy Now</button>
-  </div>
+  <button class="add" onclick="addPrimeToCart()">Add to Cart</button>
+  <button class="buy" onclick="buyPrimeNow()">Buy Now</button>
+</div>
 
 <!-- ADOBE CREATIVE CLOUD -->
   <div class="card">
     <img src="adobe.png">
     <h3>Adobe Creative Cloud (1 Year)</h3>
-    <div class="price">₹2800</div>
-    <button class="add" onclick="addToCart('Adobe Creative Cloud 1 Year',2800)">
+    <div class="price">₹3199</div>
+    <button class="add" onclick="addToCart('Adobe Creative Cloud 1 Year',3199)">
       Add to Cart
     </button>
-    <button class="buy" onclick="buyNow('Adobe Creative Cloud 1 Year',2800)">
+    <button class="buy" onclick="buyNow('Adobe Creative Cloud 1 Year',3199)">
       Buy Now
     </button>
   </div>
@@ -123,11 +132,11 @@ footer{
   <div class="card">
     <img src="perplexity.png">
     <h3>Perplexity AI Pro (1 Year)</h3>
-    <div class="price">₹549</div>
-    <button class="add" onclick="addToCart('Perplexity AI Pro 1 Year',549)">
+    <div class="price">₹449</div>
+    <button class="add" onclick="addToCart('Perplexity AI Pro 1 Year',449)">
       Add to Cart
     </button>
-    <button class="buy" onclick="buyNow('Perplexity AI Pro 1 Year',549)">
+    <button class="buy" onclick="buyNow('Perplexity AI Pro 1 Year',449)">
       Buy Now
     </button>
   </div>
@@ -136,9 +145,9 @@ footer{
   <div class="card">
     <img src="sonyliv.png">
     <h3>Sony LIV 1 Month</h3>
-    <div class="price">₹249</div>
-    <button class="add" onclick="addToCart('Sony LIV 1 Month',249)">Add to Cart</button>
-    <button class="buy" onclick="buyNow('Sony LIV 1 Month',249)">Buy Now</button>
+    <div class="price">₹99</div>
+    <button class="add" onclick="addToCart('Sony LIV 1 Month',99)">Add to Cart</button>
+    <button class="buy" onclick="buyNow('Sony LIV 1 Month',99)">Buy Now</button>
   </div>
 
   <!-- JIO HOTSTAR -->
