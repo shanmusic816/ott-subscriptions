@@ -108,8 +108,13 @@ h1{
 </div>
 
 <script>
-/* BUY NOW */
 function buyIPTV(){
+
+  // 🔴 PURANA DATA CLEAR
+  localStorage.removeItem("cart");
+  localStorage.removeItem("singleProduct");
+
+  // ✅ NAYA PRODUCT SET
   const product = {
     name: "IPTV Subscription",
     price: 100,
@@ -117,8 +122,10 @@ function buyIPTV(){
   };
 
   localStorage.setItem("singleProduct", JSON.stringify(product));
+
   window.location.href = "payment.html";
 }
+</script>
 
 /* ADD TO CART */
 function addIPTV(){
