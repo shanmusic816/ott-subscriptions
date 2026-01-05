@@ -20,7 +20,6 @@ body{
   text-align:center;
   box-shadow:0 4px 12px rgba(0,0,0,0.15);
 }
-h2{margin-top:0;}
 .amount{
   font-size:22px;
   color:#e53935;
@@ -35,6 +34,10 @@ h2{margin-top:0;}
   text-decoration:none;
   font-size:16px;
   margin-top:15px;
+}
+.qr img{
+  width:200px;
+  margin-top:20px;
 }
 .done-btn{
   margin-top:20px;
@@ -66,44 +69,66 @@ h2{margin-top:0;}
     Amount: ₹<span id="amount">0</span>
   </div>
 
+  <!-- PAY VIA UPI -->
+  <a id="upiBtn" class="pay-btn">Pay via UPI App</a>
+
+  <!-- QR -->
+  <div class="qr">
+    <img id="qrImg" alt="UPI QR Code">
+    <div class="note">Scan QR using any UPI app</div>
+  </div>
+
   <button class="done-btn" onclick="openWhatsApp()">
     I Have Paid
   </button>
-
-  <div class="note">
-    After payment, click the button to send details on WhatsApp.
-  </div>
 </div>
 
 <script>
-/* ORDER ID */
+/* ======================
+   ORDER & DATA
+====================== */
 const orderId = "GX-" + Math.floor(100000 + Math.random() * 900000);
+document.getElementById("orderId").innerText = orderId;
 
-/* READ DATA */
 const buyNowItem = JSON.parse(localStorage.getItem("buyNowItem"));
 const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 let items = [];
 let total = 0;
 
-/* BUY NOW */
 if (buyNowItem) {
   items.push(`${buyNowItem.name} x${buyNowItem.qty}`);
   total = buyNowItem.price * buyNowItem.qty;
-}
-/* CART */
-else if (cart.length > 0) {
+} else if (cart.length > 0) {
   cart.forEach(item => {
     items.push(`${item.name} x${item.qty}`);
     total += item.price * item.qty;
   });
 }
 
-/* DISPLAY */
-document.getElementById("orderId").innerText = orderId;
 document.getElementById("amount").innerText = total;
 
-/* WHATSAPP */
+/* ======================
+   UPI DETAILS
+====================== */
+const upiId = "shanmusic816@okhdfcbank"; // ✅ tumhara UPI
+const payName = "GlitchXshan Store";
+
+/* CREATE UPI LINK */
+const upiLink =
+  `upi://pay?pa=${upiId}&pn=${encodeURIComponent(payName)}&am=${total}&cu=INR`;
+
+/* SET BUTTON */
+document.getElementById("upiBtn").href = upiLink;
+
+/* GENERATE QR */
+document.getElementById("qrImg").src =
+  "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=" +
+  encodeURIComponent(upiLink);
+
+/* ======================
+   WHATSAPP
+====================== */
 function openWhatsApp(){
   if(total === 0){
     alert("No order found. Please go back.");
