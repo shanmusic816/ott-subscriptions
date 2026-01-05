@@ -1,21 +1,115 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>IPTV Subscription</title>
+<meta charset="UTF-8">
+<title>IPTV Subscription | GlitchXshan</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+  margin:0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+}
+
+.iptv-card{
+  background:#0b0f14;
+  width:92%;
+  max-width:380px;
+  border-radius:16px;
+  padding:20px;
+  box-shadow:0 20px 50px rgba(0,0,0,.5);
+  text-align:center;
+}
+
+.iptv-card img{
+  width:90px;
+  margin-bottom:10px;
+}
+
+.iptv-card h1{
+  font-size:22px;
+  margin:10px 0 5px;
+}
+
+.price{
+  font-size:24px;
+  color:#00ffc6;
+  font-weight:bold;
+  margin-bottom:15px;
+}
+
+.features{
+  text-align:left;
+  font-size:14px;
+  margin-bottom:18px;
+}
+
+.features li{
+  margin:6px 0;
+}
+
+.buy-btn{
+  background:#00ffc6;
+  color:#000;
+  border:none;
+  width:100%;
+  padding:12px;
+  font-size:16px;
+  border-radius:10px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.cart-btn{
+  margin-top:10px;
+  background:#1f2933;
+  color:#fff;
+  border:none;
+  width:100%;
+  padding:10px;
+  font-size:14px;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+.process{
+  margin-top:15px;
+  font-size:13px;
+  opacity:.9;
+}
+</style>
 </head>
 
 <body>
 
-<!-- IPTV CARD -->
-<div class="card">
-  <h2>IPTV Subscription</h2>
-  <p>₹100 / Month</p>
+<div class="iptv-card">
+  <img src="assets/iptv.jpeg" alt="IPTV">
 
-  <button onclick="buyIPTV()">Buy Now</button>
-  <button onclick="addIPTV()">Add to Cart</button>
+  <h1>IPTV Subscription</h1>
+  <div class="price">₹100 / Month</div>
+
+  <ul class="features">
+    <li>📱 Works on Mobile / TV / PC</li>
+    <li>⚡ Instant Activation</li>
+    <li>👥 1 ID = 3 Devices</li>
+    <li>⏱ Validity: 1 Month</li>
+    <li>❌ No Refund After Delivery</li>
+  </ul>
+
+  <button class="buy-btn" onclick="buyIPTV()">Buy Now</button>
+  <button class="cart-btn" onclick="addIPTV()">Add to Cart</button>
+
+  <div class="process">
+    🛒 Select → 💳 Pay → 📲 WhatsApp → ✅ Delivered
+  </div>
 </div>
 
-<!-- ✅ SCRIPT HAMESHA BODY KE END ME -->
 <script>
 /* ADD TO CART */
 function addIPTV(){
@@ -25,11 +119,15 @@ function addIPTV(){
   if(found){
     found.qty += 1;
   } else {
-    cart.push({ name:"IPTV Subscription", price:100, qty:1 });
+    cart.push({
+      name: "IPTV Subscription",
+      price: 100,
+      qty: 1
+    });
   }
 
   localStorage.setItem("cart", JSON.stringify(cart));
-  localStorage.removeItem("buyNowItem"); // 🔥 IMPORTANT
+  localStorage.removeItem("buyNowItem");
   alert("IPTV added to cart");
 }
 
@@ -41,7 +139,6 @@ function buyIPTV(){
     qty: 1
   };
 
-  // 🔥 CLEAR EVERYTHING ELSE
   localStorage.removeItem("cart");
   localStorage.setItem("buyNowItem", JSON.stringify(item));
 
