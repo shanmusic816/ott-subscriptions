@@ -6,76 +6,79 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
+*{
+  box-sizing:border-box;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
 body{
   margin:0;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
   min-height:100vh;
   display:flex;
-  align-items:center;
   justify-content:center;
+  align-items:center;
+  background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
   color:#fff;
 }
 
-.iptv-card{
-  background:#0b0f14;
+.card{
+  background:#111;
   width:92%;
-  max-width:380px;
-  border-radius:16px;
-  padding:20px;
-  box-shadow:0 20px 50px rgba(0,0,0,.5);
+  max-width:420px;
+  border-radius:18px;
+  padding:22px;
   text-align:center;
+  box-shadow:0 15px 40px rgba(0,0,0,.6);
 }
 
-.iptv-card img{
+.card img{
   width:90px;
-  margin-bottom:10px;
+  height:90px;
+  object-fit:contain;
+  margin-bottom:12px;
 }
 
-.iptv-card h1{
-  font-size:22px;
-  margin:10px 0 5px;
+.card h1{
+  margin:8px 0 5px;
+  font-size:24px;
 }
 
 .price{
-  font-size:24px;
-  color:#00ffc6;
+  color:#00ffd5;
+  font-size:20px;
   font-weight:bold;
   margin-bottom:15px;
 }
 
 .features{
   text-align:left;
+  margin:15px 0;
   font-size:14px;
-  margin-bottom:18px;
 }
 
 .features li{
-  margin:6px 0;
+  margin-bottom:6px;
 }
 
 .buy-btn{
-  background:#00ffc6;
-  color:#000;
-  border:none;
   width:100%;
-  padding:12px;
+  padding:14px;
+  margin-top:12px;
   font-size:16px;
+  border:none;
   border-radius:10px;
-  font-weight:bold;
   cursor:pointer;
 }
 
-.cart-btn{
-  margin-top:10px;
-  background:#1f2933;
+.buy{
+  background:#00ffd5;
+  color:#000;
+  font-weight:bold;
+}
+
+.cart{
+  background:#333;
   color:#fff;
-  border:none;
-  width:100%;
-  padding:10px;
-  font-size:14px;
-  border-radius:10px;
-  cursor:pointer;
 }
 
 .process{
@@ -83,12 +86,20 @@ body{
   font-size:13px;
   opacity:.9;
 }
+
+.footer{
+  margin-top:12px;
+  font-size:12px;
+  opacity:.6;
+}
 </style>
 </head>
 
 <body>
 
-<div class="iptv-card">
+<div class="card">
+
+  <!-- IPTV LOGO -->
   <img src="assets/iptv.jpeg" alt="IPTV">
 
   <h1>IPTV Subscription</h1>
@@ -98,50 +109,58 @@ body{
     <li>📱 Works on Mobile / TV / PC</li>
     <li>⚡ Instant Activation</li>
     <li>👥 1 ID = 3 Devices</li>
-    <li>⏱ Validity: 1 Month</li>
+    <li>📅 Validity: 1 Month</li>
     <li>❌ No Refund After Delivery</li>
   </ul>
 
-  <button class="buy-btn" onclick="buyIPTV()">Buy Now</button>
-  <button class="cart-btn" onclick="addIPTV()">Add to Cart</button>
+  <!-- BUY NOW -->
+  <button class="buy-btn buy" onclick="buyNowIPTV()">Buy Now</button>
+
+  <!-- ADD TO CART -->
+  <button class="buy-btn cart" onclick="addIPTV()">Add to Cart</button>
 
   <div class="process">
     🛒 Select → 💳 Pay → 📲 WhatsApp → ✅ Delivered
   </div>
+
+  <div class="footer">
+    Made with ❤️ by Shan
+  </div>
 </div>
 
 <script>
-/* ADD TO CART */
+/* ======================
+   ADD TO CART (IPTV)
+====================== */
 function addIPTV(){
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
   const found = cart.find(i => i.name === "IPTV Subscription");
 
   if(found){
     found.qty += 1;
-  } else {
+  }else{
     cart.push({
-      name: "IPTV Subscription",
-      price: 100,
-      qty: 1
+      name:"IPTV Subscription",
+      price:100,
+      qty:1
     });
   }
 
   localStorage.setItem("cart", JSON.stringify(cart));
-  localStorage.removeItem("buyNowItem");
   alert("IPTV added to cart");
 }
 
-/* BUY NOW */
-function buyIPTV(){
+/* ======================
+   BUY NOW (IPTV)
+====================== */
+function buyNowIPTV(){
   const item = {
-    name: "IPTV Subscription",
-    price: 100,
-    qty: 1
+    name:"IPTV Subscription",
+    price:100,
+    qty:1
   };
 
-  localStorage.removeItem("cart");
   localStorage.setItem("buyNowItem", JSON.stringify(item));
-
   window.location.href = "payment.html";
 }
 </script>
