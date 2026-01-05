@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>IPTV Subscription – GlitchXshan</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+  margin:0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  color:#fff;
+}
+
+.container{
+  max-width:420px;
+  margin:30px auto;
+  background:#111;
+  border-radius:14px;
+  padding:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,.6);
+}
+
+.logo{
+  width:120px;
+  display:block;
+  margin:0 auto 10px;
+}
+
+h1{
+  text-align:center;
+  margin:10px 0;
+}
+
+.price{
+  text-align:center;
+  font-size:26px;
+  color:#ff5252;
+  font-weight:bold;
+}
+
+.features{
+  margin:20px 0;
+}
+
+.features li{
+  margin:8px 0;
+}
+
+.badge{
+  background:#1e88e5;
+  padding:6px 10px;
+  border-radius:6px;
+  display:inline-block;
+  font-size:14px;
+}
+
+.btn{
+  width:100%;
+  padding:14px;
+  margin-top:10px;
+  border:none;
+  border-radius:8px;
+  font-size:16px;
+  cursor:pointer;
+}
+
+.buy{
+  background:#00c853;
+  color:#000;
+  font-weight:bold;
+}
+
+.cart{
+  background:#fff;
+  color:#000;
+}
+
+.note{
+  font-size:13px;
+  color:#ccc;
+  margin-top:15px;
+  text-align:center;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<img src="assets/iptv.jpeg" class="logo">
+
+<h1>IPTV Subscription</h1>
+
+<div class="price">₹100 / Month</div>
+
+<div class="features">
+<ul>
+  <li>📱 Mobile / TV / PC Supported</li>
+  <li>🖥️ 1 ID → Up to 3 Devices</li>
+  <li>⚡ Instant Activation</li>
+  <li>📆 Valid for 1 Month</li>
+  <li>❌ No Refund After Delivery</li>
+</ul>
+</div>
+
+<button class="btn cart" onclick="addIPTV()">
+  Add to Cart
+</button>
+
+<button class="btn buy" onclick="buyIPTV()">
+  Buy Now
+</button>
+
+<div class="note">
+🛒 Select → 💳 Pay → 📲 WhatsApp → ✅ Delivered
+</div>
+
+</div>
+
+<script>
+function addIPTV(){
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cart.push({name:"IPTV Subscription", price:100, qty:1});
+  localStorage.setItem("cart", JSON.stringify(cart));
+  alert("IPTV added to cart");
+}
+
+function buyIPTV(){
+  localStorage.setItem("buyNow",
+    JSON.stringify({name:"IPTV Subscription", price:100, qty:1})
+  );
+  window.location.href = "payment.html";
+}
+</script>
+
+</body>
+</html>
