@@ -20,6 +20,7 @@ body{
   text-align:center;
   box-shadow:0 4px 12px rgba(0,0,0,0.15);
 }
+h2{margin-top:0;}
 .amount{
   font-size:22px;
   color:#e53935;
@@ -69,10 +70,8 @@ body{
     Amount: ₹<span id="amount">0</span>
   </div>
 
-  <!-- PAY VIA UPI -->
   <a id="upiBtn" class="pay-btn">Pay via UPI App</a>
 
-  <!-- QR -->
   <div class="qr">
     <img id="qrImg" alt="UPI QR Code">
     <div class="note">Scan QR using any UPI app</div>
@@ -81,47 +80,63 @@ body{
   <button class="done-btn" onclick="openWhatsApp()">
     I Have Paid
   </button>
+
+  <div class="note">
+    Please send payment screenshot on WhatsApp after payment.
+  </div>
 </div>
 
 <script>
 /* ======================
-   ORDER & DATA
+   ORDER ID
 ====================== */
 const orderId = "GX-" + Math.floor(100000 + Math.random() * 900000);
 document.getElementById("orderId").innerText = orderId;
 
-const buyNowItem = JSON.parse(localStorage.getItem("buyNowItem"));
+/* ======================
+   READ DATA
+====================== */
 const cart = JSON.parse(localStorage.getItem("cart")) || [];
+const buyNowItem = JSON.parse(localStorage.getItem("buyNowItem"));
 
 let items = [];
 let total = 0;
 
-if (buyNowItem) {
-  items.push(`${buyNowItem.name} x${buyNowItem.qty}`);
-  total = buyNowItem.price * buyNowItem.qty;
-} else if (cart.length > 0) {
+/* ======================
+   PRIORITY: CART FIRST
+====================== */
+if (cart.length > 0) {
   cart.forEach(item => {
     items.push(`${item.name} x${item.qty}`);
     total += item.price * item.qty;
   });
 }
+/* BUY NOW ONLY IF CART EMPTY */
+else if (buyNowItem) {
+  items.push(`${buyNowItem.name} x${buyNowItem.qty}`);
+  total = buyNowItem.price * buyNowItem.qty;
+}
 
+/* SAFETY */
+if (total === 0) {
+  alert("No order found. Please go back and try again.");
+}
+
+/* DISPLAY */
 document.getElementById("amount").innerText = total;
 
 /* ======================
    UPI DETAILS
 ====================== */
-const upiId = "shanmusic816@okhdfcbank"; // ✅ tumhara UPI
+const upiId = "shanmusic816@okhdfcbank";   // ✅ tumhara UPI
 const payName = "GlitchXshan Store";
 
 /* CREATE UPI LINK */
 const upiLink =
   `upi://pay?pa=${upiId}&pn=${encodeURIComponent(payName)}&am=${total}&cu=INR`;
 
-/* SET BUTTON */
+/* SET BUTTON + QR */
 document.getElementById("upiBtn").href = upiLink;
-
-/* GENERATE QR */
 document.getElementById("qrImg").src =
   "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=" +
   encodeURIComponent(upiLink);
@@ -131,16 +146,16 @@ document.getElementById("qrImg").src =
 ====================== */
 function openWhatsApp(){
   if(total === 0){
-    alert("No order found. Please go back.");
+    alert("Payment data missing.");
     return;
   }
 
-  const list = items.map((i,n)=>`${n+1}. ${i}`).join("\n");
+  const itemList = items.map((i,n)=>`${n+1}. ${i}`).join("\n");
 
   const msg =
 "Payment Done\n\n"+
 "Order ID: "+orderId+"\n"+
-"Items:\n"+list+"\n\n"+
+"Items:\n"+itemList+"\n\n"+
 "Amount: ₹"+total+"\n\n"+
 "UPI Txn ID:\nScreenshot attached.";
 
