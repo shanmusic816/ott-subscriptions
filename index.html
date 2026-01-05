@@ -9,73 +9,93 @@
 body{
   margin:0;
   font-family: Arial, sans-serif;
-  background:#f4f6fb;
+  background:#f5f5f5;
 }
+
 header{
-  background:#000;
-  color:#fff;
-  padding:15px 20px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-header h1{
-  margin:0;
-  font-size:22px;
-}
-.cart-btn{
   background:#fff;
-  color:#000;
-  padding:8px 14px;
-  border-radius:8px;
-  text-decoration:none;
-  font-weight:bold;
+  padding:15px;
+  display:flex;
+  align-items:center;
+  gap:15px;
+  box-shadow:0 2px 6px rgba(0,0,0,0.1);
 }
+
+header img{
+  height:45px;
+}
+
+header h1{
+  font-size:20px;
+  margin:0;
+}
+
+header p{
+  margin:0;
+  font-size:13px;
+  color:#555;
+}
+
 .products{
-  max-width:1100px;
-  margin:auto;
-  padding:25px;
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:20px;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:15px;
+  padding:15px;
 }
+
 .card{
   background:#fff;
-  border-radius:12px;
-  padding:18px;
+  border-radius:10px;
+  padding:15px;
   text-align:center;
-  box-shadow:0 6px 15px rgba(0,0,0,0.1);
+  box-shadow:0 2px 8px rgba(0,0,0,0.08);
 }
+
 .card img{
-  width:70px;
+  height:60px;
   margin-bottom:10px;
 }
+
 .card h3{
-  margin:10px 0 5px;
+  margin:5px 0;
+  font-size:16px;
 }
+
 .price{
-  color:#e63946;
-  font-weight:bold;
+  font-size:18px;
+  color:#e53935;
   margin:8px 0;
 }
+
 select{
   width:100%;
-  padding:8px;
-  margin:10px 0;
+  padding:6px;
+  margin:8px 0;
 }
+
 button{
-  padding:8px 14px;
+  width:100%;
+  padding:8px;
   border:none;
   border-radius:6px;
   cursor:pointer;
-  margin:5px;
+  font-size:14px;
 }
-.buy{ background:#000; color:#fff; }
-.add{ background:#e0e0e0; }
+
+.add{
+  background:#eee;
+  margin-bottom:6px;
+}
+
+.buy{
+  background:#000;
+  color:#fff;
+}
+
 footer{
   text-align:center;
   padding:15px;
-  font-size:14px;
+  font-size:13px;
   color:#555;
 }
 </style>
@@ -84,98 +104,85 @@ footer{
 <body>
 
 <header>
-  <h1>GlitchXshan Store</h1>
-  <a class="cart-btn" href="cart.html">🛒 Cart</a>
+  <img src="logo.jpg">
+  <div>
+    <h1>GlitchXshan Store</h1>
+    <p>Premium OTT & AI Deals</p>
+  </div>
 </header>
 
 <div class="products">
 
 <!-- PRIME VIDEO -->
 <div class="card">
-  <img src="prime.png" alt="Prime Video">
+  <img src="prime.png">
   <h3>Prime Video</h3>
 
   <select id="primePlan">
     <option value="">Select Plan</option>
-    <option value="Prime Video 1 Month (Ads)|129">
-      1 Month (With Ads) – ₹129
-    </option>
-    <option value="Prime Video 1 Month (No Ads)|149">
-      1 Month (No Ads) – ₹149
-    </option>
-    <option value="Prime Video 6 Month (Ads)|249">
-      6 Month (With Ads) – ₹249
-    </option>
-    <option value="Prime Video 6 Month (No Ads)|349">
-      6 Month (No Ads) – ₹349
-    </option>
+    <option value="Prime Video 1 Month (Ads)|129">1 Month (Ads) – ₹129</option>
+    <option value="Prime Video 1 Month (No Ads)|149">1 Month (No Ads) – ₹149</option>
+    <option value="Prime Video 6 Month (Ads)|249">6 Month (Ads) – ₹249</option>
+    <option value="Prime Video 6 Month (No Ads)|349">6 Month (No Ads) – ₹349</option>
   </select>
 
-  <button class="add" onclick="addPrimeToCart()">Add to Cart</button>
-  <button class="buy" onclick="buyPrimeNow()">Buy Now</button>
+  <button class="add" onclick="addPrime()">Add to Cart</button>
+  <button class="buy" onclick="buyPrime()">Buy Now</button>
 </div>
 
-<!-- ADOBE CREATIVE CLOUD -->
-  <div class="card">
-    <img src="adobe.png">
-    <h3>Adobe Creative Cloud (1 Year)</h3>
-    <div class="price">₹3199</div>
-    <button class="add" onclick="addToCart('Adobe Creative Cloud 1 Year',3199)">
-      Add to Cart
-    </button>
-    <button class="buy" onclick="buyNow('Adobe Creative Cloud 1 Year',3199)">
-      Buy Now
-    </button>
-  </div>
+<!-- SONY LIV -->
+<div class="card">
+  <img src="sonyliv.png">
+  <h3>Sony LIV (1 Month)</h3>
+  <div class="price">₹99</div>
+  <button class="add" onclick="addToCart('Sony LIV 1 Month',99)">Add to Cart</button>
+  <button class="buy" onclick="buyNow('Sony LIV 1 Month',99)">Buy Now</button>
+</div>
 
-  <!-- PERPLEXITY AI -->
-  <div class="card">
-    <img src="perplexity.png">
-    <h3>Perplexity AI Pro (1 Year)</h3>
-    <div class="price">₹449</div>
-    <button class="add" onclick="addToCart('Perplexity AI Pro 1 Year',449)">
-      Add to Cart
-    </button>
-    <button class="buy" onclick="buyNow('Perplexity AI Pro 1 Year',449)">
-      Buy Now
-    </button>
-  </div>
+<!-- JIO HOTSTAR -->
+<div class="card">
+  <img src="hotstar.png">
+  <h3>Jio Hotstar (1 Month)</h3>
+  <div class="price">₹199</div>
+  <button class="add" onclick="addToCart('Jio Hotstar 1 Month',199)">Add to Cart</button>
+  <button class="buy" onclick="buyNow('Jio Hotstar 1 Month',199)">Buy Now</button>
+</div>
 
-  <!-- SONY LIV -->
-  <div class="card">
-    <img src="sonyliv.png">
-    <h3>Sony LIV 1 Month</h3>
-    <div class="price">₹99</div>
-    <button class="add" onclick="addToCart('Sony LIV 1 Month',99)">Add to Cart</button>
-    <button class="buy" onclick="buyNow('Sony LIV 1 Month',99)">Buy Now</button>
-  </div>
+<!-- CHATGPT PLUS -->
+<div class="card">
+  <img src="chatgpt.png">
+  <h3>ChatGPT Plus (1 Month)</h3>
+  <div class="price">₹249</div>
+  <button class="add" onclick="addToCart('ChatGPT Plus 1 Month',249)">Add to Cart</button>
+  <button class="buy" onclick="buyNow('ChatGPT Plus 1 Month',249)">Buy Now</button>
+</div>
 
-  <!-- JIO HOTSTAR -->
-  <div class="card">
-    <img src="hotstar.png">
-    <h3>Jio Hotstar 1 Month</h3>
-    <div class="price">₹199</div>
-    <button class="add" onclick="addToCart('Jio Hotstar 1 Month',199)">Add to Cart</button>
-    <button class="buy" onclick="buyNow('Jio Hotstar 1 Month',199)">Buy Now</button>
-  </div>
+<!-- GEMINI -->
+<div class="card">
+  <img src="gemini.png">
+  <h3>Gemini AI Pro (1 Year)</h3>
+  <div class="price">₹299</div>
+  <button class="add" onclick="addToCart('Gemini AI Pro 1 Year',299)">Add to Cart</button>
+  <button class="buy" onclick="buyNow('Gemini AI Pro 1 Year',299)">Buy Now</button>
+</div>
 
-  <!-- CHATGPT PLUS -->
-  <div class="card">
-    <img src="chatgpt.png">
-    <h3>ChatGPT Plus 1 Month</h3>
-    <div class="price">₹249</div>
-    <button class="add" onclick="addToCart('ChatGPT Plus 1 Month',249)">Add to Cart</button>
-    <button class="buy" onclick="buyNow('ChatGPT Plus 1 Month',249)">Buy Now</button>
-  </div>
+<!-- ADOBE -->
+<div class="card">
+  <img src="adobe.png">
+  <h3>Adobe Creative Cloud (1 Year)</h3>
+  <div class="price">₹3199</div>
+  <button class="add" onclick="addToCart('Adobe Creative Cloud 1 Year',3199)">Add to Cart</button>
+  <button class="buy" onclick="buyNow('Adobe Creative Cloud 1 Year',3199)">Buy Now</button>
+</div>
 
-  <!-- GEMINI AI PRO -->
-  <div class="card">
-    <img src="gemini.png">
-    <h3>Gemini AI Pro 1 Year</h3>
-    <div class="price">₹299</div>
-    <button class="add" onclick="addToCart('Gemini AI Pro 1 Year',299)">Add to Cart</button>
-    <button class="buy" onclick="buyNow('Gemini AI Pro 1 Year',299)">Buy Now</button>
-  </div>
+<!-- PERPLEXITY -->
+<div class="card">
+  <img src="perplexity.png">
+  <h3>Perplexity AI Pro (1 Year)</h3>
+  <div class="price">₹449</div>
+  <button class="add" onclick="addToCart('Perplexity AI Pro 1 Year',449)">Add to Cart</button>
+  <button class="buy" onclick="buyNow('Perplexity AI Pro 1 Year',449)">Buy Now</button>
+</div>
 
 </div>
 
@@ -194,20 +201,22 @@ function addToCart(name,price){
 }
 
 function buyNow(name,price){
-  window.location.href =
-    "payment.html?product="+encodeURIComponent(name)+
-    "&price="+price+
-    "&items="+encodeURIComponent(name+" x1");
+  localStorage.setItem("buyNowItem",JSON.stringify({name,price,qty:1}));
+  window.location.href="payment.html";
 }
 
-/* PRIME FUNCTIONS */
 function addPrime(){
-  const val = document.getElementById("primePlan").value.split("|");
-  addToCart(val[0], val[1]);
+  const val=document.getElementById("primePlan").value;
+  if(!val){alert("Select Prime plan");return;}
+  const [name,price]=val.split("|");
+  addToCart(name,Number(price));
 }
+
 function buyPrime(){
-  const val = document.getElementById("primePlan").value.split("|");
-  buyNow(val[0], val[1]);
+  const val=document.getElementById("primePlan").value;
+  if(!val){alert("Select Prime plan");return;}
+  const [name,price]=val.split("|");
+  buyNow(name,Number(price));
 }
 </script>
 
