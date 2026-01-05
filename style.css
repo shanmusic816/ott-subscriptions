@@ -254,3 +254,19 @@ body{
   margin-bottom:8px;
   line-height:1.4;
 }
+.order-steps{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:6px;
+  margin-bottom:8px;
+}
+
+.order-steps span{
+  background:#f1f1f1;
+  color:#333;
+  font-size:12px;
+  padding:4px 10px;
+  border-radius:14px;
+  font-weight:500;
+}
