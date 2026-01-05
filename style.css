@@ -211,3 +211,40 @@ body{
     font-size:20px;
   }
 }
+/* ===============================
+   Bottom Info Bar (Mobile Friendly)
+=============================== */
+
+.bottom-info{
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  text-align:center;
+  padding:6px 8px;
+  font-size:12px;
+  font-weight:500;
+  z-index:999;
+  line-height:1.4;
+  animation:bottomBg 6s infinite alternate;
+}
+
+/* Smooth color change */
+@keyframes bottomBg{
+  0%{background:#fff3cd;color:#000;}
+  50%{background:#e3f2fd;color:#0d47a1;}
+  100%{background:#e8f5e9;color:#1b5e20;}
+}
+
+/* Mobile specific tweaks */
+@media(max-width:600px){
+  .bottom-info{
+    font-size:11px;
+    padding:6px 6px;
+  }
+}
+
+/* Space so content not hidden behind bar */
+body{
+  padding-bottom:42px;
+}
