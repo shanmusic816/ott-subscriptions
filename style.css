@@ -265,3 +265,23 @@ img[src*="iptv"] {
 .btn.cart:hover {
   background: #e5e5e5;
 }
+/* ===== FINAL BUTTON COLOR OVERRIDE ===== */
+
+/* BUY NOW — ALWAYS BLACK */
+button.buy-btn {
+  background-color: #000 !important;
+  color: #fff !important;
+}
+
+/* ADD TO CART & MORE INFO — ALWAYS GREY */
+button.btn.cart,
+a.btn.cart {
+  background-color: #f1f1f1 !important;
+  color: #000 !important;
+}
+
+/* Safety: prevent inheritance */
+.card button,
+.product-card button {
+  background-image: none !important;
+}
