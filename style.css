@@ -240,3 +240,28 @@ img[src*="iptv"] {
   max-width: 90px !important;
   max-height: 90px !important;
 }
+
+/* ===== BUTTON COLOR FIX (FINAL) ===== */
+
+/* Buy Now button */
+.buy-btn {
+  background: #000 !important;
+  color: #fff !important;
+  border-radius: 10px;
+}
+
+/* Add to Cart button */
+.btn.cart {
+  background: #f1f1f1 !important;
+  color: #000 !important;
+  border-radius: 10px;
+}
+
+/* Hover effects */
+.buy-btn:hover {
+  opacity: 0.9;
+}
+
+.btn.cart:hover {
+  background: #e5e5e5;
+}
