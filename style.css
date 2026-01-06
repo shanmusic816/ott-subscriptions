@@ -94,8 +94,9 @@ footer{
 }
 .cart-top {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
 }
 
 .cart-link {
