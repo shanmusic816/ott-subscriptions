@@ -326,3 +326,31 @@ body{
   transform: translateY(-2px);
   background: linear-gradient(135deg, #111, #000);
 }
+
+/* ===== PRODUCT CARD FIX ===== */
+
+.product-card img {
+  display: block;
+  margin: 16px auto 12px auto;
+  max-width: 90px;
+  height: auto;
+}
+
+.product-card h3 {
+  margin-top: 6px;
+}
+
+.product-card p {
+  margin: 6px 0;
+}
+
+/* Buttons spacing */
+.product-card button,
+.product-card a {
+  margin-top: 10px;
+}
+
+/* Extra gap between cards */
+.product-card {
+  margin-bottom: 24px;
+}
