@@ -226,3 +226,17 @@ footer {
   display: block !important;
   margin: 11px auto !important;
 }
+/* ===== FORCE FIX FOR IPTV IMAGE ===== */
+.product-card img {
+  width: 90px !important;
+  height: 90px !important;
+  object-fit: contain !important;
+  display: block !important;
+  margin: 0 auto 12px auto !important;
+}
+
+/* Extra safety for IPTV only */
+img[src*="iptv"] {
+  max-width: 90px !important;
+  max-height: 90px !important;
+}
