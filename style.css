@@ -285,3 +285,19 @@ a.btn.cart {
 .product-card button {
   background-image: none !important;
 }
+
+/* ===== NUCLEAR COLOR LOCK ===== */
+button {
+  background-color: initial;
+}
+
+button.buy-btn {
+  background: #000 !important;
+  color: #fff !important;
+}
+
+button.btn.cart,
+a.btn.cart {
+  background: #f1f1f1 !important;
+  color: #000 !important;
+}
