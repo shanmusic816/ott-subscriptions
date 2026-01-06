@@ -1,247 +1,125 @@
-/* ================= RESET ================= */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: Arial, Helvetica, sans-serif;
+/* ===== RESET ===== */
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial, Helvetica, sans-serif;
 }
 
-body {
-  background: #f4f6fb;
-  color: #111;
-  padding-bottom: 60px;
+body{
+  background:#f4f6fb;
+  color:#111;
+  padding-bottom:60px;
 }
 
-/* ================= HEADER ================= */
-.site-header {
-  background: #fff;
-  text-align: center;
-  padding: 20px 15px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+/* ===== HEADER ===== */
+.site-header{
+  background:#fff;
+  text-align:center;
+  padding:20px 15px;
+  box-shadow:0 2px 10px rgba(0,0,0,.08);
 }
 
-.site-logo {
-  width: 90px;
-  margin-bottom: 8px;
+.site-logo{
+  width:90px;
+  margin-bottom:8px;
 }
 
-.site-header h1 {
-  font-size: 22px;
-  margin-bottom: 4px;
+/* ===== PRODUCTS GRID ===== */
+.products{
+  max-width:1100px;
+  margin:auto;
+  padding:25px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:20px;
 }
 
-.site-header p {
-  font-size: 14px;
-  color: #666;
+/* ===== PRODUCT CARD (ONLY ONE DEFINITION) ===== */
+.product-card{
+  background:#fff;
+  border-radius:16px;
+  padding:20px;
+  text-align:center;
+  box-shadow:0 10px 25px rgba(0,0,0,.08);
 }
 
-/* ================= CART BUTTON ================= */
-.cart-btn {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background: #000;
-  color: #fff;
-  padding: 7px 14px;
-  border-radius: 20px;
-  font-size: 14px;
-  text-decoration: none;
+/* IMAGE – FIXED FOR ALL (YT / IPTV / PERPLEXITY) */
+.product-card img{
+  display:block;
+  width:90px;
+  height:90px;
+  object-fit:contain;
+  margin:16px auto 12px;
 }
 
-/* ================= PRODUCTS GRID ================= */
-.products {
-  max-width: 1100px;
-  margin: auto;
-  padding: 25px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 20px;
+/* TEXT */
+.product-card h3{
+  font-size:16px;
+  margin:6px 0;
 }
 
-/* ================= PRODUCT CARD ================= */
-.product-card {
-  background: #fff;
-  border-radius: 16px;
-  padding: 20px;
-  text-align: center;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+.product-card p{
+  margin:6px 0;
 }
 
-/* Image */
-.product-img {
-  width: 90px;
-  height: 90px;
-  object-fit: contain;
-  display: block;
-  margin: 12px auto;
+.price{
+  font-size:18px;
+  font-weight:bold;
+  color:#e53935;
+  margin:10px 0;
 }
 
-/* Title */
-.product-card h3 {
-  font-size: 16px;
-  margin: 6px 0;
-}
-
-/* Description */
-.product-card p {
-  font-size: 14px;
-  color: #555;
-  margin: 6px 0;
-}
-
-/* Price */
-.price {
-  font-size: 18px;
-  font-weight: bold;
-  color: #e53935;
-  margin: 8px 0;
-}
-
-/* ================= BUTTONS ================= */
+/* ===== BUTTONS ===== */
 .product-card button,
-.product-card a {
-  width: 100%;
-  padding: 12px;
-  margin-top: 8px;
-  border-radius: 10px;
-  border: none;
-  font-weight: 600;
-  cursor: pointer;
-  text-decoration: none;
-  display: block;
+.product-card a{
+  display:block;
+  width:100%;
+  margin-top:10px;
+  padding:12px;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:600;
+  text-decoration:none;
 }
 
-/* Buy Now */
-.buy-btn,
-.product-card button.buy {
-  background: #000;
-  color: #fff;
+.buy-btn{
+  background:linear-gradient(135deg,#000,#333);
+  color:#fff;
 }
 
-/* Add to Cart */
-.btn.cart,
-.product-card button.add {
-  background: #f1f1f1;
-  color: #000;
+.cart{
+  background:#f1f1f1;
 }
 
-/* View Details */
-.view-btn {
-  background: #eaeaea;
-  color: #000;
+/* ===== ORDER STEPS ===== */
+.order-steps{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:6px;
+  margin:10px 0;
 }
 
-/* Hover */
-.product-card button:hover,
-.product-card a:hover {
-  opacity: 0.9;
-  transform: translateY(-2px);
-  transition: 0.2s;
+.order-steps span{
+  background:#f1f1f1;
+  padding:4px 10px;
+  border-radius:14px;
+  font-size:12px;
 }
 
-/* ================= ORDER STEPS ================= */
-.order-steps {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-bottom: 10px;
+/* ===== FOOTER ===== */
+footer{
+  text-align:center;
+  padding:25px 15px;
+  font-size:13px;
+  color:#777;
 }
 
-.order-steps span {
-  background: #f1f1f1;
-  padding: 4px 10px;
-  border-radius: 14px;
-  font-size: 12px;
-}
-
-/* ================= FOOTER ================= */
-footer {
-  text-align: center;
-  padding: 25px 15px;
-  font-size: 13px;
-  color: #777;
-}
-
-/* ================= PAYMENT PAGE ================= */
-.payment-box {
-  max-width: 400px;
-  margin: 50px auto;
-  background: #fff;
-  padding: 25px;
-  border-radius: 12px;
-  text-align: center;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
-}
-
-.payment-box h2 {
-  margin-bottom: 10px;
-}
-
-.payment-box .amount {
-  font-size: 22px;
-  font-weight: bold;
-  color: #e53935;
-  margin: 15px 0;
-}
-
-.payment-box button {
-  width: 100%;
-  padding: 12px;
-  background: #000;
-  color: #fff;
-  border-radius: 10px;
-  border: none;
-  cursor: pointer;
-}
-
-/* ================= MOBILE ================= */
-@media (max-width: 600px) {
-  .site-header h1 {
-    font-size: 20px;
+/* ===== MOBILE FIX ===== */
+@media(max-width:600px){
+  .products{
+    padding:15px;
   }
-  .cart-btn {
-    font-size: 13px;
-    padding: 6px 12px;
-  }
-}
-
-/* FIX IPTV LINK BUTTON */
-.product-card a.btn {
-  display: block;
-  width: 100%;
-  padding: 12px;
-  margin-top: 10px;
-  background: linear-gradient(135deg, #000, #333);
-  color: #fff;
-  text-decoration: none;
-  text-align: center;
-  font-weight: 600;
-  border-radius: 10px;
-  transition: 0.3s ease;
-}
-
-.product-card a.btn:hover {
-  transform: translateY(-2px);
-  background: linear-gradient(135deg, #111, #000);
-}
-
-/* ===== IPTV FINAL FIX ===== */
-
-.product-card .buy-btn {
-  display: block;
-  width: 100%;
-  padding: 12px;
-  margin-top: 10px;
-  text-align: center;
-  border-radius: 10px;
-  background: #000;
-  color: #fff;
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.product-card .buy-btn:hover {
-  opacity: 0.9;
-  transform: translateY(-2px);
 }
