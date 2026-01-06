@@ -167,3 +167,43 @@ footer {
 .product-card {
   overflow: hidden;
 }
+/* ===== FINAL FORCE FIX (DO NOT TOUCH) ===== */
+
+.product-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  margin-bottom: 24px;
+}
+
+.product-card img,
+.product-img {
+  display: block !important;
+  margin: 16px auto !important;
+  max-width: 90px !important;
+  width: 90px !important;
+  height: auto !important;
+  object-fit: contain !important;
+}
+
+.product-card h3 {
+  font-size: 16px;
+  margin: 6px 0;
+}
+
+.product-card p {
+  margin: 6px 0;
+}
+
+.price {
+  font-size: 18px;
+  font-weight: bold;
+  color: #e53935;
+}
+
+.product-card button {
+  width: 100%;
+  margin-top: 10px;
+}
