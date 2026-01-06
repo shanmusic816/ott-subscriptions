@@ -1,197 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>GlitchXshan Store</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<style>
-body{
-  margin:0;
-  font-family: Arial, sans-serif;
-  background:#f5f5f5;
-}
-header{
-  background:#fff;
-  padding:15px;
-  display:flex;
-  align-items:center;
-  gap:15px;
-  box-shadow:0 2px 6px rgba(0,0,0,0.1);
-}
-header img{height:45px;}
-header h1{margin:0;font-size:20px;}
-header p{margin:0;font-size:13px;color:#555;}
-.cart-btn{
-  margin-left:auto;
-  background:#000;
-  color:#fff;
-  padding:8px 14px;
-  border-radius:20px;
-  text-decoration:none;
-  font-size:14px;
-}
-.products{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:15px;
-  padding:15px;
-}
-.card{
-  background:#fff;
-  border-radius:10px;
-  padding:15px;
-  text-align:center;
-  box-shadow:0 2px 8px rgba(0,0,0,0.08);
-}
-.card img{height:60px;margin-bottom:10px;}
-.card h3{margin:5px 0;font-size:16px;}
-.price{font-size:18px;color:#e53935;margin:8px 0;}
-select{width:100%;padding:6px;margin:8px 0;}
-button{
-  width:100%;
-  padding:8px;
-  border:none;
-  border-radius:6px;
-  cursor:pointer;
-  font-size:14px;
-}
-.add{background:#eee;margin-bottom:6px;}
-.buy{background:#000;color:#fff;}
-footer{text-align:center;padding:15px;font-size:13px;color:#555;}
-</style>
+  <meta charset="UTF-8">
+  <title>GlitchXshan Store</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<header>
-  <img src="logo.jpg">
-  <div>
-    <h1>GlitchXshan Store</h1>
-    <p>Premium OTT & AI Deals</p>
-  </div>
-  <a href="cart.html" class="cart-btn">🛒 Cart</a>
+<header class="site-header">
+  <h1>GlitchXshan Store</h1>
+  <p>Premium OTT & AI Deals</p>
 </header>
 
 <div class="products">
 
-<!-- PRIME VIDEO -->
-<div class="card">
-  <img src="prime.png">
-  <h3>Prime Video</h3>
-  <select id="primePlan">
-    <option value="">Select Plan</option>
-    <option value="Prime Video 1 Month (Ads)|129">1 Month Ads – ₹129</option>
-    <option value="Prime Video 1 Month (No Ads)|149">1 Month No Ads – ₹149</option>
-    <option value="Prime Video 6 Month (Ads)|249">6 Month Ads – ₹249</option>
-    <option value="Prime Video 6 Month (No Ads)|349">6 Month No Ads – ₹349</option>
-  </select>
-  <button class="add" onclick="addPrime()">Add to Cart</button>
-  <button class="buy" onclick="buyPrime()">Buy Now</button>
-</div>
-
-<!-- SONY LIV -->
-<div class="card">
-  <img src="sonyliv.png">
-  <h3>Sony LIV 1 Month</h3>
-  <div class="price">₹99</div>
-  <button class="add" onclick="addToCart('Sony LIV 1 Month',99)">Add to Cart</button>
-  <button class="buy" onclick="buyNow('Sony LIV 1 Month',99)">Buy Now</button>
-</div>
-
-<!-- JIO HOTSTAR -->
-<div class="card">
-  <img src="hotstar.png">
-  <h3>Jio Hotstar 1 Month</h3>
-  <div class="price">₹99</div>
-  <button class="add" onclick="addToCart('Jio Hotstar 1 Month',99)">Add to Cart</button>
-  <button class="buy" onclick="buyNow('Jio Hotstar 1 Month',99)">Buy Now</button>
-</div>
-
-<!-- CHATGPT -->
-<div class="card">
-  <img src="chatgpt.png">
-  <h3>ChatGPT Plus 1 Month</h3>
-  <div class="price">₹249</div>
-  <button class="add" onclick="addToCart('ChatGPT Plus 1 Month',249)">Add to Cart</button>
-  <button class="buy" onclick="buyNow('ChatGPT Plus 1 Month',249)">Buy Now</button>
-</div>
-
-<!-- GEMINI -->
-<div class="card">
-  <img src="gemini.png">
-  <h3>Gemini AI Pro 1 Year</h3>
-  <div class="price">₹349</div>
-  <button class="add" onclick="addToCart('Gemini AI Pro 1 Year',349)">Add to Cart</button>
-  <button class="buy" onclick="buyNow('Gemini AI Pro 1 Year',349)">Buy Now</button>
-</div>
-
-<!-- ADOBE -->
-<div class="card">
-  <img src="adobe.png">
-  <h3>Adobe Creative Cloud 1 Year</h3>
-  <div class="price">₹3199</div>
-  <button class="add" onclick="addToCart('Adobe Creative Cloud 1 Year',3199)">Add to Cart</button>
-  <button class="buy" onclick="buyNow('Adobe Creative Cloud 1 Year',3199)">Buy Now</button>
-</div>
-
-<div class="card">
-  <img src="perplexity.png" alt="Perplexity AI Pro" class="product-img">
-
-  <h3>Perplexity AI Pro 1 Year</h3>
-  <p class="price">₹499</p>
-
-  <button onclick="buyNow('Perplexity AI Pro 1 Year', 499)" class="buy-btn">Buy Now</button>
-  <button onclick="addToCart('Perplexity AI Pro 1 Year', 499)" class="btn cart">Add to Cart</button>
-</div>
-
+  <!-- PRIME VIDEO -->
   <div class="card">
-  <img src="yt-premium.png" alt="YouTube Premium" class="product-img">
+    <img src="prime.png" class="product-img">
+    <h3>Prime Video</h3>
 
-  <h3>YouTube Premium</h3>
-  <p>1 Month (On Customer Mail)</p>
-  <p class="price">₹99</p>
+    <select id="primePlan">
+      <option value="">Select Plan</option>
+      <option value="Prime 1 Month Ads|129">1 Month Ads – ₹129</option>
+      <option value="Prime 1 Month No Ads|149">1 Month No Ads – ₹149</option>
+      <option value="Prime 6 Month Ads|249">6 Month Ads – ₹249</option>
+      <option value="Prime 6 Month No Ads|349">6 Month No Ads – ₹349</option>
+    </select>
 
-  <button onclick="buyNow('YouTube Premium', 99)" class="buy-btn">Buy Now</button>
-  <button onclick="addToCart('YouTube Premium', 99)" class="btn cart">Add to Cart</button>
+    <button class="btn cart" onclick="addPrime()">Add to Cart</button>
+    <button class="btn buy" onclick="buyPrime()">Buy Now</button>
   </div>
-  
-<!-- IPTV CARD -->
-<div class="card">
-  <img src="iptv.jpeg" alt="IPTV Subscription">
 
-  <h3>IPTV Subscription</h3>
-  <p class="price">₹100 / Month</p>
+  <!-- SONY LIV -->
+  <div class="card">
+    <img src="sonyliv.png" class="product-img">
+    <h3>Sony LIV 1 Month</h3>
+    <p class="price">₹99</p>
+    <button class="btn cart" onclick="addToCart('Sony LIV 1 Month',99)">Add to Cart</button>
+    <button class="btn buy" onclick="buyNow('Sony LIV 1 Month',99)">Buy Now</button>
+  </div>
 
-  <button class="buy-btn"
-    onclick="buyNow('IPTV Subscription 1 Month', 100)">
-    Buy Now
-  </button>
+  <!-- JIO HOTSTAR -->
+  <div class="card">
+    <img src="hotstar.png" class="product-img">
+    <h3>Jio Hotstar 1 Month</h3>
+    <p class="price">₹99</p>
+    <button class="btn cart" onclick="addToCart('Jio Hotstar 1 Month',99)">Add to Cart</button>
+    <button class="btn buy" onclick="buyNow('Jio Hotstar 1 Month',99)">Buy Now</button>
+  </div>
 
-  <button class="btn cart"
-    onclick="addToCart('IPTV Subscription 1 Month', 100)">
-    Add to Cart
-  </button>
+  <!-- CHATGPT -->
+  <div class="card">
+    <img src="chatgpt.png" class="product-img">
+    <h3>ChatGPT Plus 1 Month</h3>
+    <p class="price">₹249</p>
+    <button class="btn cart" onclick="addToCart('ChatGPT Plus 1 Month',249)">Add to Cart</button>
+    <button class="btn buy" onclick="buyNow('ChatGPT Plus 1 Month',249)">Buy Now</button>
+  </div>
 
-  <a href="iptv.html" class="btn cart">
-    More Info
-  </a>
+  <!-- GEMINI -->
+  <div class="card">
+    <img src="gemini.png" class="product-img">
+    <h3>Gemini AI Pro 1 Year</h3>
+    <p class="price">₹349</p>
+    <button class="btn cart" onclick="addToCart('Gemini AI Pro 1 Year',349)">Add to Cart</button>
+    <button class="btn buy" onclick="buyNow('Gemini AI Pro 1 Year',349)">Buy Now</button>
+  </div>
+
+  <!-- ADOBE -->
+  <div class="card">
+    <img src="adobe.png" class="product-img">
+    <h3>Adobe Creative Cloud 1 Year</h3>
+    <p class="price">₹3199</p>
+    <button class="btn cart" onclick="addToCart('Adobe CC 1 Year',3199)">Add to Cart</button>
+    <button class="btn buy" onclick="buyNow('Adobe CC 1 Year',3199)">Buy Now</button>
+  </div>
+
+  <!-- PERPLEXITY -->
+  <div class="card">
+    <img src="perplexity.png" class="product-img">
+    <h3>Perplexity AI Pro 1 Year</h3>
+    <p class="price">₹499</p>
+    <button class="btn cart" onclick="addToCart('Perplexity AI Pro 1 Year',499)">Add to Cart</button>
+    <button class="btn buy" onclick="buyNow('Perplexity AI Pro 1 Year',499)">Buy Now</button>
+  </div>
+
+  <!-- YOUTUBE PREMIUM -->
+  <div class="card">
+    <img src="yt-premium.png" class="product-img">
+    <h3>YouTube Premium</h3>
+    <p>1 Month (On Customer Mail)</p>
+    <p class="price">₹99</p>
+    <button class="btn cart" onclick="addToCart('YouTube Premium 1 Month',99)">Add to Cart</button>
+    <button class="btn buy" onclick="buyNow('YouTube Premium 1 Month',99)">Buy Now</button>
+  </div>
+
+  <!-- IPTV -->
+  <div class="card">
+    <img src="iptv.jpeg" class="product-img">
+    <h3>IPTV Subscription</h3>
+    <p class="price">₹100 / Month</p>
+    <button class="btn buy" onclick="buyNow('IPTV 1 Month',100)">Buy Now</button>
+    <button class="btn cart" onclick="addToCart('IPTV 1 Month',100)">Add to Cart</button>
+    <a href="iptv.html" class="more-info">More Info</a>
+  </div>
+
 </div>
-  
-</div>
-<div class="order-steps">
-  <span>🛒 Select</span>
-  <span>💳 Pay</span>
-  <span>📲 WhatsApp</span>
-  <span>✅ Delivered</span>
-</div>
-<footer>Made with ❤️ by Shan</footer>
+
+<footer>
+  Select ➝ Pay ➝ WhatsApp ➝ Delivered  
+  <br>Made with ❤️ by Shan
+</footer>
 
 <script>
 function addToCart(name,price){
   let cart=JSON.parse(localStorage.getItem("cart"))||[];
-  const f=cart.find(i=>i.name===name);
-  if(f) f.qty++; else cart.push({name,price,qty:1});
+  cart.push({name,price,qty:1});
   localStorage.setItem("cart",JSON.stringify(cart));
   alert("Added to cart");
 }
@@ -212,5 +137,6 @@ function buyPrime(){
   buyNow(n,Number(p));
 }
 </script>
+
 </body>
 </html>
