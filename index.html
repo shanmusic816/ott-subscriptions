@@ -157,15 +157,29 @@ footer{text-align:center;padding:15px;font-size:13px;color:#555;}
   </div>
   
 <!-- IPTV CARD -->
-<div class="card">
-  <img src="iptv.jpeg" class="product-img" alt="IPTV Subscription">
+<!-- IPTV CARD -->
+<div class="product-card">
+  <img src="iptv.jpeg" alt="IPTV Subscription">
 
   <h3>IPTV Subscription</h3>
   <p class="price">₹100 / Month</p>
 
-  <button class="buy-btn" onclick="buyNow('IPTV Subscription 1 Month', 100)">
+  <!-- Buy Now -->
+  <button class="buy-btn"
+    onclick="buyNow('IPTV Subscription 1 Month', 100)">
     Buy Now
   </button>
+
+  <!-- Add to Cart -->
+  <button class="btn cart"
+    onclick="addToCart('IPTV Subscription 1 Month', 100)">
+    Add to Cart
+  </button>
+
+  <!-- More Info -->
+  <a href="iptv.html" class="btn cart">
+    More Info
+  </a>
 </div>
   
 </div>
