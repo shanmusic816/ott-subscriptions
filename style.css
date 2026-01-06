@@ -354,3 +354,55 @@ body{
 .product-card {
   margin-bottom: 24px;
 }
+
+/* === CARD & PRODUCT-CARD SAME STYLE FIX === */
+
+.card,
+.product-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  margin-bottom: 24px;
+}
+
+.card img,
+.product-card img {
+  display: block;
+  margin: 16px auto 12px auto;
+  max-width: 90px;
+  height: auto;
+  object-fit: contain;
+}
+
+.card h3,
+.product-card h3 {
+  font-size: 16px;
+  margin: 6px 0;
+}
+
+.card p,
+.product-card p {
+  margin: 6px 0;
+}
+
+.card .price,
+.product-card .price {
+  font-size: 18px;
+  font-weight: bold;
+  color: #e53935;
+  margin: 10px 0;
+}
+
+.card button,
+.product-card button,
+.card a,
+.product-card a {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
