@@ -151,3 +151,19 @@ footer {
     padding: 15px;
   }
 }
+/* ===== FORCE FIX FOR IPTV & ALL PRODUCT IMAGES ===== */
+
+.product-card img,
+.product-img {
+  width: 90px !important;
+  max-width: 90px !important;
+  height: 90px !important;
+  object-fit: contain !important;
+  display: block;
+  margin: 12px auto !important;
+}
+
+/* Ensure card height stays normal */
+.product-card {
+  overflow: hidden;
+}
