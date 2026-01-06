@@ -1,303 +1,94 @@
-/* ================= RESET ================= */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,Helvetica,sans-serif;
 }
 
-/* ================= BODY ================= */
-body {
-  background: #f4f6fb;
-  color: #111;
-  padding-bottom: 60px;
+body{
+  background:#f4f6fb;
+  color:#111;
 }
 
-/* ================= HEADER ================= */
-.site-header {
-  background: #ffffff;
-  text-align: center;
-  padding: 20px 15px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+.site-header{
+  background:#fff;
+  text-align:center;
+  padding:20px;
+  box-shadow:0 2px 10px rgba(0,0,0,.08);
 }
 
-.site-logo {
-  width: 90px;
-  margin-bottom: 8px;
+.products{
+  max-width:1100px;
+  margin:auto;
+  padding:20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
 }
 
-.site-header h1 {
-  font-size: 22px;
-  margin-bottom: 4px;
+.card{
+  background:#fff;
+  border-radius:16px;
+  padding:20px;
+  text-align:center;
+  box-shadow:0 10px 25px rgba(0,0,0,.08);
 }
 
-.site-header p {
-  font-size: 14px;
-  color: #666;
+.product-img{
+  width:90px;
+  height:90px;
+  object-fit:contain;
+  margin:0 auto 12px;
+  display:block;
 }
 
-/* ================= PRODUCTS GRID ================= */
-.products {
-  max-width: 1100px;
-  margin: auto;
-  padding: 25px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 20px;
+.card h3{
+  margin:6px 0;
 }
 
-/* ================= PRODUCT CARD ================= */
-.product-card {
-  background: #fff;
-  border-radius: 16px;
-  padding: 20px;
-  text-align: center;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+select{
+  width:100%;
+  padding:8px;
+  margin:10px 0;
 }
 
-/* Product Image */
-.product-card img {
-  width: 90px;
-  height: 90px;
-  object-fit: contain;
-  display: block;
-  margin: 0 auto 12px;
+.price{
+  font-size:18px;
+  font-weight:bold;
+  color:#e53935;
+  margin:10px 0;
 }
 
-/* Product Title */
-.product-card h3 {
-  font-size: 16px;
-  margin-bottom: 6px;
+.btn{
+  width:100%;
+  padding:12px;
+  border:none;
+  border-radius:10px;
+  font-weight:bold;
+  cursor:pointer;
+  margin-top:10px;
 }
 
-/* Product Subtitle */
-.product-card p {
-  font-size: 14px;
-  color: #555;
+.btn.buy{
+  background:#000;
+  color:#fff;
 }
 
-/* Price */
-.price {
-  font-size: 18px;
-  font-weight: bold;
-  color: #e53935;
-  margin: 8px 0;
+.btn.cart{
+  background:#eee;
 }
 
-/* ================= BUTTONS ================= */
-.product-card button,
-.product-card a {
-  display: block;
-  width: 100%;
-  padding: 12px;
-  margin-top: 8px;
-  border-radius: 10px;
-  border: none;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  text-decoration: none;
+.more-info{
+  display:block;
+  margin-top:10px;
+  text-decoration:none;
+  font-weight:bold;
+  color:#6a1b9a;
 }
 
-/* Buy Button */
-.buy-btn {
-  background: #000;
-  color: #fff;
-}
-
-/* Add to Cart Button */
-.btn.cart {
-  background: #eee;
-  color: #000;
-}
-
-/* Hover Effect */
-.buy-btn:hover {
-  opacity: 0.9;
-}
-
-/* ================= ORDER STEPS ================= */
-.order-steps {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-bottom: 10px;
-}
-
-.order-steps span {
-  background: #f1f1f1;
-  padding: 4px 10px;
-  border-radius: 14px;
-  font-size: 12px;
-  font-weight: 500;
-}
-
-/* ================= FOOTER ================= */
-footer {
-  text-align: center;
-  padding: 25px 15px;
-  font-size: 13px;
-  color: #777;
-}
-
-/* ================= MOBILE FIX ================= */
-@media (max-width: 600px) {
-  .site-header h1 {
-    font-size: 20px;
-  }
-
-  .products {
-    padding: 15px;
-  }
-}
-/* ===== FORCE FIX FOR IPTV & ALL PRODUCT IMAGES ===== */
-
-.product-card img,
-.product-img {
-  width: 90px !important;
-  max-width: 90px !important;
-  height: 90px !important;
-  object-fit: contain !important;
-  display: block;
-  margin: 12px auto !important;
-}
-
-/* Ensure card height stays normal */
-.product-card {
-  overflow: hidden;
-}
-/* ===== FINAL FORCE FIX (DO NOT TOUCH) ===== */
-
-.product-card {
-  background: #fff;
-  border-radius: 16px;
-  padding: 20px;
-  text-align: center;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-  margin-bottom: 24px;
-}
-
-.product-card img,
-.product-img {
-  display: block !important;
-  margin: 16px auto !important;
-  max-width: 90px !important;
-  width: 90px !important;
-  height: auto !important;
-  object-fit: contain !important;
-}
-
-.product-card h3 {
-  font-size: 16px;
-  margin: 6px 0;
-}
-
-.product-card p {
-  margin: 6px 0;
-}
-
-.price {
-  font-size: 18px;
-  font-weight: bold;
-  color: #e53935;
-}
-
-.product-card button {
-  width: 100%;
-  margin-top: 10px;
-}
-/* FORCE FIX – IPTV IMAGE SIZE */
-.product-card img[src*="iptv"] {
-  width: 90px !important;
-  height: 90px !important;
-  max-width: 90px !important;
-  object-fit: contain !important;
-  display: block !important;
-  margin: 12px auto !important;
-}
-/* ===== IPTV ABSOLUTE FORCE FIX ===== */
-.product-card img[src*="iptv"] {
-  width: 90px !important;
-  height: 90px !important;
-  max-width: 90px !important;
-  max-height: 90px !important;
-  object-fit: contain !important;
-  display: block !important;
-  margin: 11px auto !important;
-}
-/* ===== FORCE FIX FOR IPTV IMAGE ===== */
-.product-card img {
-  width: 90px !important;
-  height: 90px !important;
-  object-fit: contain !important;
-  display: block !important;
-  margin: 0 auto 12px auto !important;
-}
-
-/* Extra safety for IPTV only */
-img[src*="iptv"] {
-  max-width: 90px !important;
-  max-height: 90px !important;
-}
-
-/* ===== BUTTON COLOR FIX (FINAL) ===== */
-
-/* Buy Now button */
-.buy-btn {
-  background: #000 !important;
-  color: #fff !important;
-  border-radius: 10px;
-}
-
-/* Add to Cart button */
-.btn.cart {
-  background: #f1f1f1 !important;
-  color: #000 !important;
-  border-radius: 10px;
-}
-
-/* Hover effects */
-.buy-btn:hover {
-  opacity: 0.9;
-}
-
-.btn.cart:hover {
-  background: #e5e5e5;
-}
-/* ===== FINAL BUTTON COLOR OVERRIDE ===== */
-
-/* BUY NOW — ALWAYS BLACK */
-button.buy-btn {
-  background-color: #000 !important;
-  color: #fff !important;
-}
-
-/* ADD TO CART & MORE INFO — ALWAYS GREY */
-button.btn.cart,
-a.btn.cart {
-  background-color: #f1f1f1 !important;
-  color: #000 !important;
-}
-
-/* Safety: prevent inheritance */
-.card button,
-.product-card button {
-  background-image: none !important;
-}
-
-/* ===== NUCLEAR COLOR LOCK ===== */
-button {
-  background-color: initial;
-}
-
-button.buy-btn {
-  background: #000 !important;
-  color: #fff !important;
-}
-
-button.btn.cart,
-a.btn.cart {
-  background: #f1f1f1 !important;
-  color: #000 !important;
+footer{
+  text-align:center;
+  padding:15px;
+  font-size:13px;
+  color:#555;
 }
