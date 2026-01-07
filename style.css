@@ -116,3 +116,50 @@ footer{
     font-size: 13px;
   }
 }
+
+/* ===== STATIC PAGES (About, Privacy, Contact) ===== */
+
+.page-wrapper {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 20px;
+}
+
+.page-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.page-card h2 {
+  font-size: 22px;
+  margin-bottom: 12px;
+  color: #111;
+}
+
+.page-card p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #444;
+}
+
+/* Links (Instagram / Email) */
+.page-card a {
+  color: #5a189a;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.page-card a:hover {
+  text-decoration: underline;
+}
+
+/* Footer fix for static pages */
+.static-footer {
+  text-align: center;
+  padding: 15px;
+  font-size: 13px;
+  color: #666;
+  margin-top: 30px;
+}
