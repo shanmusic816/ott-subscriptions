@@ -242,3 +242,32 @@ footer{
   display: inline-block;
   font-weight: 600;
 }
+
+.intro-text {
+  font-size: 15px;
+  color: #555;
+  margin-bottom: 25px;
+}
+
+.contact-box {
+  background: #f8f9fa;
+  border-radius: 10px;
+  padding: 18px;
+  margin-bottom: 20px;
+}
+
+.contact-box h2 {
+  margin-bottom: 6px;
+  font-size: 18px;
+}
+
+.contact-box span {
+  font-size: 13px;
+  color: #777;
+}
+
+.response-time {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #333;
+}
