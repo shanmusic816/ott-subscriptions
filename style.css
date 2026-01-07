@@ -182,3 +182,63 @@ footer{
   color: #555;
   line-height: 1.6;
 }
+
+/* ===== Common Pages Design (About, Privacy, Contact) ===== */
+
+.page-wrapper {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 35px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.page-wrapper h1 {
+  font-size: 32px;
+  margin-bottom: 15px;
+  color: #111;
+  border-bottom: 3px solid #6a5acd;
+  display: inline-block;
+  padding-bottom: 6px;
+}
+
+.page-wrapper h2 {
+  margin-top: 30px;
+  color: #222;
+  font-size: 22px;
+}
+
+.page-wrapper p {
+  margin-top: 12px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #555;
+}
+
+.page-wrapper ul {
+  margin-top: 12px;
+  padding-left: 20px;
+}
+
+.page-wrapper ul li {
+  margin-bottom: 8px;
+  color: #555;
+}
+
+.page-wrapper a {
+  color: #6a5acd;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.page-wrapper a:hover {
+  text-decoration: underline;
+}
+
+/* Back link */
+.back-home {
+  margin-top: 30px;
+  display: inline-block;
+  font-weight: 600;
+}
