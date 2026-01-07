@@ -329,3 +329,24 @@ footer a{
 footer a:hover{
   text-decoration:underline;
 }
+
+.page-container{
+  max-width: 900px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.page-container h1{
+  margin-bottom: 15px;
+}
+
+.page-container a{
+  display: inline-block;
+  margin-top: 20px;
+  text-decoration: none;
+  color: #6a1b9a;
+  font-weight: bold;
+}
