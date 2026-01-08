@@ -350,3 +350,20 @@ footer a:hover{
   color: #6a1b9a;
   font-weight: bold;
 }
+
+.info-page {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  line-height: 1.7;
+}
+
+.info-page h2 {
+  margin-top: 25px;
+  color: #222;
+}
+
+.info-page ul,
+.info-page ol {
+  margin-left: 20px;
+}
